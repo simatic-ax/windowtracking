@@ -1,6 +1,6 @@
 USING Simatic.Ax.WindowTracking.Events;
 
-NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
+NAMESPACE Simatic.Ax.WindowTracking.Trigger
     INTERFACE IVirtualTrigger
     
         METHOD ActivateEvent : EventStatus

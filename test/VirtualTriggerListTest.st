@@ -1,78 +1,60 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.VirtualTrigger;
+USING Simatic.Ax.WindowTracking.Trigger;
 
-NAMESPACE Simatic.Ax.WindowTracking.Events
+NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
     {TestFixture}
     CLASS TestVirtualTriggerList
         VAR PROTECTED
-            vt : VirtualTriggerList;
-            evt : TriggerEvantMock;
+            tl : TriggerList;
+            trig1 : VirtualTrigger;
+            trig2 : VirtualTrigger;
+            trig3 : VirtualTrigger;
+            trig4 : VirtualTrigger;
+            evt : TriggerEventMock;
         END_VAR
 
         METHOD PRIVATE SetupTestTrigger
-            vt.EventHandler := evt;
-            vt.Position := 1000;
-            vt.Id := UINT#10;
+            trig1.Position := 1100;
+            trig1.Id := UINT#1;
+            trig1.EventHandler := evt;
+            tl.Add(tp := trig1);
+            
+            trig2.Position := 1200;
+            trig2.Id := UINT#2;
+            trig2.EventHandler := evt;
+            tl.Add(tp := trig2);
+
+            trig3.Position := 1300;
+            trig3.Id := UINT#3;
+            trig3.EventHandler := evt;
+            tl.Add(tp := trig3);
+
+            trig4.Position := 1400;
+            trig4.Id := UINT#4;
+            trig4.EventHandler := evt;
+            tl.Add(tp := trig4);
         END_METHOD
 
         {Test}
-        METHOD PUBLIC Test_Activate_method_with_no_event_expect_NullReferecne
-            VAR_TEMP
-                s : EventStatus;
-                i : Int;
-            END_VAR
-            Equal(expected := TRUE, actual := s <> EventStatus#Finished);
-            s := vt.ActivateEvent();
-            Equal(expected := TRUE, actual := s = EventStatus#NullReference);
+        METHOD PUBLIC TestCount_elements_expect_4
+            Equal(expected := UINT#4, actual := tl.Count());
         END_METHOD
 
-        {Test}
-        METHOD PUBLIC Test_Activate_method_end_check_Execution
-            VAR_TEMP
-                s : EventStatus;
-                i : Int;
-            END_VAR
-            THIS.SetupTestTrigger();
-            Equal(expected := TRUE, actual := s <> EventStatus#Finished);
-            s := vt.ActivateEvent();
-            Equal(expected := TRUE, actual := s = EventStatus#Finished);
-        END_METHOD
-
-        {Test}
-        METHOD PUBLIC Test_GetId_And_Expect_10
-            THIS.SetupTestTrigger();
-            Equal(expected := UINT#10, actual := vt.GetId());
-        END_METHOD
-        {Test}
-
-        METHOD PUBLIC Test_GetPosition_And_Expect_1000
-            THIS.SetupTestTrigger();
-            Equal(expected := UINT#1000, actual := vt.GetPosition());
-        END_METHOD
         
-        METHOD PUBLIC Test_IsEnabled_And_Exect_true
-            THIS.SetupTestTrigger();
-            Equal(expected := TRUE, actual := vt.IsEnabled());
-        END_METHOD
 
     END_CLASS
 
-    CLASS TriggerEvantMock IMPLEMENTS ITriggerEvent
+    CLASS VirtualTriggerMock
         VAR PUBLIC
             
         END_VAR
         VAR PROTECTED
             
         END_VAR
-    
-        METHOD PUBLIC Action : EventStatus
-            VAR_INPUT
-                te : IVirtualTrigger;
-                tw : ITransportWindow;
-            END_VAR
-
-            Action := EventStatus#Finished;
-
+        
+        METHOD PUBLIC MyMethod
+            ;
         END_METHOD
     END_CLASS
+
 END_NAMESPACE

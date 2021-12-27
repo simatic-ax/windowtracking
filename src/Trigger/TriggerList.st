@@ -1,5 +1,5 @@
-NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
-    CLASS TriggerPoints
+NAMESPACE Simatic.Ax.WindowTracking.Trigger
+    CLASS TriggerList
         VAR PUBLIC
             
         END_VAR

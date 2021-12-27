@@ -1,12 +1,12 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.VirtualTrigger;
-
-NAMESPACE Simatic.Ax.WindowTracking.Events
+USING Simatic.Ax.WindowTracking.Trigger;
+USING Simatic.Ax.WindowTracking.Events;
+NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
     {TestFixture}
     CLASS TestVirtualTrigger
         VAR PROTECTED
             vt : VirtualTrigger;
-            evt : TriggerEvantMock;
+            evt : TriggerEventMock;
         END_VAR
 
         METHOD PRIVATE SetupTestTrigger
@@ -57,7 +57,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Events
 
     END_CLASS
 
-    CLASS TriggerEvantMock IMPLEMENTS ITriggerEvent
+    CLASS TriggerEventMock IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             
         END_VAR

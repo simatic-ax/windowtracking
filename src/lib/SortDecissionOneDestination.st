@@ -1,5 +1,5 @@
 USING Simatic.Ax.WindowTracking.Exits;
-USING Simatic.Ax.WindowTracking.VirtualTrigger;
+USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking
     CLASS SortDecissionOneDestination IMPLEMENTS ISortDecission

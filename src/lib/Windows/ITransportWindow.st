@@ -23,5 +23,8 @@ NAMESPACE Simatic.Ax.WindowTracking
             END_VAR
         END_METHOD
 
+        METHOD GetPosition : DINT
+        END_METHOD
+
     END_INTERFACE
 END_NAMESPACE

@@ -1,5 +1,4 @@
 USING Simatic.Ax.SimpleControlModules;
-USING Simatic.Ax.SimpleControlModules;
 USING Simatic.Ax.WindowTracking.Exits;
 
 NAMESPACE Simatic.Ax.WindowTracking
@@ -23,6 +22,11 @@ NAMESPACE Simatic.Ax.WindowTracking
             _newPos := enc.GetValue();
             _difference := (_newPos - _lastPos) MOD enc.GetModulo();
             _actualPos := _actualPos + _difference;
+            _lastPos := _newPos;
+        END_METHOD
+
+        METHOD PUBLIC GetPosition : DINT
+            GetPosition := _actualPos;
         END_METHOD
 
         // METHOD PUBLIC CheckPos

@@ -36,6 +36,10 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 i : UINT;
             END_VAR
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
+                IF (_triggerPointList[i] = NULL) THEN
+                    GetTriggerPoint := NULL;
+                    RETURN;
+                END_IF;
                 IF (_triggerPointList[i].GetId() = Id) THEN
                     GetTriggerPoint := _triggerPointList[i];
                     RETURN;

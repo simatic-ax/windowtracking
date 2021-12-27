@@ -3,9 +3,9 @@ USING Simatic.Ax.WindowTracking.VirtualTrigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.Events
     {TestFixture}
-    CLASS TestVirtualTrigger
+    CLASS TestVirtualTriggerList
         VAR PROTECTED
-            vt : VirtualTrigger;
+            vt : VirtualTriggerList;
             evt : TriggerEvantMock;
         END_VAR
 

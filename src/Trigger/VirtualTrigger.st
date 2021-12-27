@@ -17,8 +17,13 @@ NAMESPACE Simatic.Ax.WindowTracking.Events
                 tw : ITransportWindow;
             END_VAR
             IF EventHandler <> NULL THEN
-                ActivateEvent := EventHandler.Action(te := THIS, tw := tw);
-                RETURN;
+                IF THIS.IsEnabled() THEN
+                    ActivateEvent := EventHandler.Action(te := THIS, tw := tw);
+                    RETURN;
+                ELSE
+                    ActivateEvent := Eventstatus#NotEnabled;
+                    RETURN;
+                END_IF;
             ELSE
                 ActivateEvent := Eventstatus#NullReference;
             END_IF;

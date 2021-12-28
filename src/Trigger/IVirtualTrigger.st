@@ -9,7 +9,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_VAR
         END_METHOD
         
-        METHOD IsActivated
+        METHOD IsActivated : BOOL
         END_METHOD
 
         METHOD  IsEnabled : BOOL
@@ -21,5 +21,11 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         METHOD GetPosition : DINT
         END_METHOD
         
+        METHOD Check : BOOL
+            VAR_INPUT
+               tw : ITransportWindow;
+            END_VAR
+       END_METHOD
+
     END_INTERFACE
 END_NAMESPACE

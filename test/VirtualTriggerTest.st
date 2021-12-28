@@ -55,11 +55,34 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Equal(expected := TRUE, actual := vt.IsEnabled());
         END_METHOD
 
+        {Test(sp := 1000, value := 994, res := FALSE)}
+        {Test(sp := 1000, value := 995, res := TRUE)}
+        {Test(sp := 1000, value := 996, res := TRUE)}
+        {Test(sp := 1000, value := 999, res := TRUE)}
+        {Test(sp := 1000, value := 1000, res := TRUE)}
+        {Test(sp := 1000, value := 1001, res := TRUE)}
+        {Test(sp := 1000, value := 1004, res := TRUE)}
+        {Test(sp := 1000, value := 1005, res := TRUE)}
+        {Test(sp := 1000, value := 1006, res := FALSE)}
+        METHOD PUBLIC Test_in_range
+            VAR_INPUT
+                sp : DINT;
+                value : DINT;
+                res : BOOL;
+            END_VAR
+            VAR_TEMP
+                r : BOOL;
+            END_VAR
+            r := vt.InRange(sp := sp, value := value, ul := 5, ll := 5);
+            Equal(expected := res, actual := r);
+        END_METHOD
+        
     END_CLASS
 
     CLASS TriggerEventMock IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             Id : UINT;
+            Calls : INT;
         END_VAR
         VAR PROTECTED
             
@@ -73,7 +96,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
 
             Id := te.GetId();
             Action := EventStatus#Finished;
-
+            Calls := Calls + 1;
         END_METHOD
+
     END_CLASS
 END_NAMESPACE

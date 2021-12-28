@@ -18,7 +18,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         END_VAR
         
         METHOD PROTECTED Setup
-            tws. Encoder := enc;
+            tws.Encoder := enc;
             v1.EventHandler := te1;
             v2.EventHandler := te2;
             tl.Add(v1);
@@ -28,11 +28,13 @@ NAMESPACE Simatic.Ax.WindowTracking
 
         {Test}
         METHOD PUBLIC Count_Of_Empty_List_Expect_0
+            THIS.Setup();
             Equal(expected := UINT#0, actual := tws.Count());
         END_METHOD
 
         {Test}
         METHOD PUBLIC Remove_Window_fom_empty_list_expect_0
+            THIS.Setup();
             tws.Remove();
             Equal(expected := UINT#0, actual := tws.Count());
         END_METHOD
@@ -40,6 +42,7 @@ NAMESPACE Simatic.Ax.WindowTracking
 
         {Test}
         METHOD PUBLIC Create_4Windows_And_Call_Count_Expect_4
+            THIS.Setup();
             tws.Create();
             tws.Create();
             tws.Create();
@@ -130,30 +133,42 @@ NAMESPACE Simatic.Ax.WindowTracking
             END_VAR
             ;
             THIS.Setup();
-            THIS.Test_Evaluate_4_windows_with_Distance_10();
+            
+            tws.Create();
+            
+            Equal(expected := UINT#1, actual := tws.Count());
             enc.EncoderValue := 20;
             Equal(expected := te1.Id, actual := UINT#0);
             Equal(expected := te2.Id, actual := UINT#0);
-            tws.Remove();
             // First virtual trigger triggered
             tws.Evaluate();
             Equal(expected := te1.Id, actual := UINT#1);
             Equal(expected := te2.Id, actual := UINT#0);
+            Equal(expected := 1, actual := te1.Calls);
+            Equal(expected := 0, actual := te2.Calls);
+
             pos := tws.GetWindow(UINT#0).GetPosition();
             Equal(expected := TRUE, actual := ti = NULL);
-            pos := tws.GetWindow(UINT#1).GetPosition();
-            Equal(expected := 20, actual := pos);
-            pos := tws.GetWindow(UINT#2).GetPosition();
-            Equal(expected := 20, actual := pos);
-            pos := tws.GetWindow(UINT#3).GetPosition();
-            Equal(expected := 20, actual := pos);
+
+            // Create new window 
+            tws.Create();
+
             // second virtual trigger triggered
-            enc.EncoderValue := 30;
+            enc.EncoderValue := 25;
             tws.Evaluate();
             Equal(expected := te1.Id, actual := UINT#1);
             Equal(expected := te2.Id, actual := UINT#2);
-        END_METHOD
+            Equal(expected := 1, actual := te1.Calls);
+            Equal(expected := 1, actual := te2.Calls);
 
+            // windows moved to pos 40
+            enc.EncoderValue := 40;
+            tws.Evaluate();
+            Equal(expected := te1.Id, actual := UINT#1);
+            Equal(expected := te2.Id, actual := UINT#2);
+            Equal(expected := 1, actual := te1.Calls);
+            Equal(expected := 1, actual := te2.Calls);
+        END_METHOD
 
     END_CLASS
 
@@ -188,7 +203,6 @@ NAMESPACE Simatic.Ax.WindowTracking
             VAR_INPUT
                 mode : CountMode;
             END_VAR
-
             ;
         END_METHOD
 

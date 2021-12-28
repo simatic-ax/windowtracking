@@ -54,29 +54,6 @@ NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
             Equal(expected := expVal, actual := tl.GetTriggerPoint(id).GetPosition());
         END_METHOD
 
-
-        {Test(sp := 1000, value := 994, res := FALSE)}
-        {Test(sp := 1000, value := 995, res := TRUE)}
-        {Test(sp := 1000, value := 996, res := TRUE)}
-        {Test(sp := 1000, value := 999, res := TRUE)}
-        {Test(sp := 1000, value := 1000, res := TRUE)}
-        {Test(sp := 1000, value := 1001, res := TRUE)}
-        {Test(sp := 1000, value := 1004, res := TRUE)}
-        {Test(sp := 1000, value := 1005, res := TRUE)}
-        {Test(sp := 1000, value := 1006, res := FALSE)}
-        METHOD PUBLIC Test_in_range
-            VAR_INPUT
-                sp : DINT;
-                value : DINT;
-                res : BOOL;
-            END_VAR
-            VAR_TEMP
-                r : BOOL;
-            END_VAR
-            r := tl.InRange(sp := sp, value := value, ul := 5, ll := 5);
-            Equal(expected := res, actual := r);
-        END_METHOD
-
     END_CLASS
 
     CLASS VirtualTriggerMock

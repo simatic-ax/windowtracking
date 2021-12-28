@@ -6,10 +6,13 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Position : DINT;
             Id : UINT;
             EventHandler : ITriggerEvent;
+            PositiveTolerace : DINT := 5;
+            NegativeTolerance : DINT := 5;
         END_VAR
 
         VAR PROTECTED
             _isActiavted : BOOL;
+            _activateOld : BOOL;
         END_VAR
 
         METHOD PUBLIC ActivateEvent : EventStatus
@@ -20,7 +23,6 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             IF EventHandler <> NULL THEN
                 IF THIS.IsEnabled() THEN
                     ActivateEvent := EventHandler.Action(te := THIS, tw := tw);
-                    _isActiavted := TRUE;
                     RETURN;
                 ELSE
                     ActivateEvent := Eventstatus#NotEnabled;
@@ -31,13 +33,9 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_IF;
             
         END_METHOD
-        
-        METHOD PUBLIC Check : BOOL
-             ;
-        END_METHOD
 
-        METHOD PUBLIC IsActivated
-            ;
+        METHOD PUBLIC IsActivated : BOOL
+            IsActivated := _isActiavted;
         END_METHOD
 
         METHOD PUBLIC GetID : UINT
@@ -52,5 +50,39 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             IsEnabled := TRUE;
         END_METHOD
 
+        METHOD PUBLIC Check : BOOL
+            VAR_INPUT
+                tw : ITransportWindow;
+            END_VAR
+            VAR_TEMP
+                _inRange : BOOL;
+                _activateRis : BOOL;
+            END_VAR
+            _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := PositiveTolerace, ll := NegativeTolerance);
+            _activateRis := _inRange AND NOT _activateOld;
+            _activateOld := _inRange;
+            IF (_activateRis) THEN
+                _isActiavted := TRUE;
+                THIS.ActivateEvent(tw);
+            END_IF;
+            ;
+        END_METHOD
+
+        METHOD PUBLIC InRange : BOOL
+            VAR_INPUT
+               sp : DINT;
+               value : DINT;
+               ul : DINT;
+               ll : DINT;
+            END_VAR
+            VAR_TEMP
+               _ul : DINT;
+               _ll : DINT;
+            END_VAR;
+            _ul := sp + ul;
+            _ll := sp - ll;
+
+            InRange := value >= _ll AND value <= _ul;
+       END_METHOD
     END_CLASS
 END_NAMESPACE

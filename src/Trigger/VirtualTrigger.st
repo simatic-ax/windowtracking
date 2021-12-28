@@ -16,9 +16,11 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             VAR_INPUT
                 tw : ITransportWindow;
             END_VAR
+
             IF EventHandler <> NULL THEN
                 IF THIS.IsEnabled() THEN
                     ActivateEvent := EventHandler.Action(te := THIS, tw := tw);
+                    _isActiavted := TRUE;
                     RETURN;
                 ELSE
                     ActivateEvent := Eventstatus#NotEnabled;
@@ -30,6 +32,10 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             
         END_METHOD
         
+        METHOD PUBLIC Check : BOOL
+             ;
+        END_METHOD
+
         METHOD PUBLIC IsActivated
             ;
         END_METHOD

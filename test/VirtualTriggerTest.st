@@ -1,7 +1,7 @@
 USING AxUnit.Assert;
 USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.WindowTracking.Events;
-NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
+NAMESPACE Simatic.Ax.WindowTracking.Trigger
     {TestFixture}
     CLASS TestVirtualTrigger
         VAR PROTECTED
@@ -59,7 +59,7 @@ NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
 
     CLASS TriggerEventMock IMPLEMENTS ITriggerEvent
         VAR PUBLIC
-            
+            Id : UINT;
         END_VAR
         VAR PROTECTED
             
@@ -71,6 +71,7 @@ NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
                 tw : ITransportWindow;
             END_VAR
 
+            Id := te.GetId();
             Action := EventStatus#Finished;
 
         END_METHOD

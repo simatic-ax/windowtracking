@@ -1,9 +1,11 @@
+USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
     CLASS TransportWindows
         VAR PUBLIC
             Encoder : IEncoder;
+            TriggerPointList : ITriggerList;
         END_VAR
         VAR PROTECTED
             _tranportWindowList : ARRAY[UINT#0..BUF_SIZE - UINT#1] OF ITransportWindow;
@@ -32,14 +34,6 @@ NAMESPACE Simatic.Ax.WindowTracking
             END_IF;
         END_METHOD
 
-        METHOD PUBLIC GetHead : UINT
-            GetHead := _head;
-        END_METHOD
-        
-        METHOD PUBLIC GetTail : UINT
-            GetTail := _tail;
-        END_METHOD
-
         METHOD PUBLIC GetWindow : ITransportWindow
              VAR_INPUT
                  id : UINT;
@@ -60,6 +54,7 @@ NAMESPACE Simatic.Ax.WindowTracking
                 o := _tranportWindowList[(_tail + i) MOD BUF_SIZE];
                 IF (o <> NULL) THEN
                     o.CalcPosition(enc := Encoder);
+                    TriggerPointList.Check(o);
                 END_IF;
             END_FOR;
         END_METHOD

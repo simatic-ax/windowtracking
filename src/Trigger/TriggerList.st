@@ -1,7 +1,8 @@
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
-    CLASS TriggerList
+    CLASS TriggerList IMPLEMENTS ITriggerList
         VAR PUBLIC
-            
+            PositiveTolerace : DINT := 5;
+            NegativeTolerance : DINT := 5;
         END_VAR
         VAR PROTECTED
             _triggerPointList : ARRAY[UINT#0..BUF_SIZE - UINT#1] OF IVirtualTrigger;
@@ -47,6 +48,42 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_FOR;
             GetTriggerPoint := NULL;
         END_METHOD
+    
+        METHOD PUBLIC Check : BOOL
+            VAR_INPUT
+                tw : ITransportWindow;
+            END_VAR
+            VAR_TEMP
+                i : UINT;
+                o : IVirtualTrigger;
+            END_VAR
+            FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
+                o := _triggerPointList[i];
+                IF (o <> NULL) THEN
+                    IF (THIS.InRange(sp := o.GetPosition(), value := tw.GetPosition(), ul := PositiveTolerace, ll := NegativeTolerance)) THEN
+                        o.ActivateEvent(tw);
+                    END_IF;
+                END_IF;
+            END_FOR;
+        END_METHOD
+
+        METHOD PUBLIC InRange : BOOL
+             VAR_INPUT
+                sp : DINT;
+                value : DINT;
+                ul : DINT;
+                ll : DINT;
+             END_VAR
+             VAR_TEMP
+                _ul : DINT;
+                _ll : DINT;
+             END_VAR;
+             _ul := sp + ul;
+             _ll := sp - ll;
+
+             InRange := value >= _ll AND value <= _ul;
+        END_METHOD
+
     END_CLASS
     
 END_NAMESPACE

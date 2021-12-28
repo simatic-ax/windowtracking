@@ -1,5 +1,7 @@
 USING AxUnit.Assert;
+USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
+
 
 NAMESPACE Simatic.Ax.WindowTracking
     {TestFixture}
@@ -8,10 +10,20 @@ NAMESPACE Simatic.Ax.WindowTracking
         VAR PROTECTED
             tws : TransportWindows;
             enc : EncoderMock;
+            v1 : VirtualTrigger := (Position := 20, Id := UINT#1);
+            v2 : VirtualTrigger := (Position := 30, Id := UINT#2);
+            te1 : TriggerEventMock;
+            te2 : TriggerEventMock;
+            tl : TriggerList;
         END_VAR
         
         METHOD PROTECTED Setup
             tws. Encoder := enc;
+            v1.EventHandler := te1;
+            v2.EventHandler := te2;
+            tl.Add(v1);
+            tl.Add(v2);
+            tws.TriggerPointList := tl;
         END_METHOD
 
         {Test}
@@ -110,7 +122,42 @@ NAMESPACE Simatic.Ax.WindowTracking
             Equal(expected := 20, actual := pos);
         END_METHOD
 
+        {Test}
+        METHOD PUBLIC Test_Evaluate_4_windows_with_Distance_20_remove_one_Expect_one_null
+            VAR_TEMP
+                pos : DINT;
+                ti : ITransportWindow;
+            END_VAR
+            ;
+            THIS.Setup();
+            THIS.Test_Evaluate_4_windows_with_Distance_10();
+            enc.EncoderValue := 20;
+            Equal(expected := te1.Id, actual := UINT#0);
+            Equal(expected := te2.Id, actual := UINT#0);
+            tws.Remove();
+            // First virtual trigger triggered
+            tws.Evaluate();
+            Equal(expected := te1.Id, actual := UINT#1);
+            Equal(expected := te2.Id, actual := UINT#0);
+            pos := tws.GetWindow(UINT#0).GetPosition();
+            Equal(expected := TRUE, actual := ti = NULL);
+            pos := tws.GetWindow(UINT#1).GetPosition();
+            Equal(expected := 20, actual := pos);
+            pos := tws.GetWindow(UINT#2).GetPosition();
+            Equal(expected := 20, actual := pos);
+            pos := tws.GetWindow(UINT#3).GetPosition();
+            Equal(expected := 20, actual := pos);
+            // second virtual trigger triggered
+            enc.EncoderValue := 30;
+            tws.Evaluate();
+            Equal(expected := te1.Id, actual := UINT#1);
+            Equal(expected := te2.Id, actual := UINT#2);
+        END_METHOD
+
+
     END_CLASS
+
+
 
     CLASS EncoderMock IMPLEMENTS IEncoder
     

@@ -1,12 +1,12 @@
 USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
-NAMESPACE Simatic.Ax.WindowTracking
+NAMESPACE Simatic.Ax.WindowTracking.SortDecission
     INTERFACE ISortDecission
         METHOD Check : BOOL
             VAR_INPUT
                 tw : ITransportWindow;
                 te : IVirtualTrigger;
-                exitpoint : IExitPoint;
+                exitpoint : IExitPointHandler;
             END_VAR
         END_METHOD
     END_INTERFACE

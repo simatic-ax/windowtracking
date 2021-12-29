@@ -1,8 +1,8 @@
 USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.Events;
+USING Simatic.Ax.WindowTracking.EventHandler;
 
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+NAMESPACE Simatic.Ax.WindowTracking.SortDecission
     CLASS SortDecissionOneDestination IMPLEMENTS ISortDecission
         VAR PUBLIC
 
@@ -15,7 +15,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             VAR_INPUT
                 tw : ITransportWindow;
                 te : IVirtualTrigger;
-                exitpoint : IExitPoint;
+                exitpoint : IExitPointHandler;
             END_VAR
             VAR_TEMP
                 _item : REF_TO ItemOneDestination;

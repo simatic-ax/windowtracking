@@ -26,7 +26,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
         END_METHOD
 
         {Test}
-        METHOD PUBLIC MyTestMethod
+        METHOD PUBLIC Test_Clear_window
             THIS.Setup();
             tws.Create();
             enc.EncoderValue := 0;

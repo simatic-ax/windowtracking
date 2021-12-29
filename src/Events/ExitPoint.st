@@ -1,11 +1,13 @@
-USING Simatic.Ax.WindowTracking.Events;
+USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
+USING Simatic.Ax.WindowTracking.SortDecission;
 
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
-    CLASS ExitPoint IMPLEMENTS ITriggerEvent, IExitPoint
+NAMESPACE Simatic.Ax.WindowTracking.Events
+    CLASS ExitPoint IMPLEMENTS ITriggerEvent
 
         VAR PUBLIC
             SortDecission : ISortDecission;
+            ExitHandler : IExitPointHandler;
         END_VAR
     
         METHOD PUBLIC Action : EventStatus
@@ -16,12 +18,9 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             VAR_TEMP
                 _sortItem : BOOL;
             END_VAR
-            _sortItem := SortDecission.Check(tw := tw, te := te, exitpoint := THIS);
+            _sortItem := SortDecission.Check(tw := tw, te := te, exitpoint := ExitHandler);
             
         END_METHOD
     
-        METHOD PUBLIC IsReady : BOOL
-            IsReady := TRUE;
-        END_METHOD
     END_CLASS
 END_NAMESPACE

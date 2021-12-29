@@ -4,12 +4,12 @@ USING Simatic.Ax.WindowTracking.Trigger;
 NAMESPACE Simatic.Ax.WindowTracking.Items
     CLASS ItemOneDestination IMPLEMENTS IItem
         
-        VAR PROTECTED
-            dest1 : IVirtualTrigger;
+        VAR PUBLIC
+            Destination1 : IVirtualTrigger;
         END_VAR
 
         METHOD PUBLIC GetDestination : IVirtualTrigger;
-            GetDestination := dest1;
+            GetDestination := Destination1;
         END_METHOD
 
     END_CLASS

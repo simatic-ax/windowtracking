@@ -1,6 +1,6 @@
-USING Simatic.Ax.WindowTracking.Events;
 USING Simatic.Ax.WindowTracking.Trigger;
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+
+NAMESPACE Simatic.Ax.WindowTracking.Events
     CLASS ClearWindow IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             WindowList : ITransportWindowsCleanup;

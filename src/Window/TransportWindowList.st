@@ -2,7 +2,7 @@ USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS TransportWindows
+    CLASS TransportWindowList IMPLEMENTS ITransportWindowsCleanup
         VAR PUBLIC
             Encoder : IEncoder;
             TriggerPointList : ITriggerList;

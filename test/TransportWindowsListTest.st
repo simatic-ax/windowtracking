@@ -8,7 +8,7 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS Test_WindowList
         
         VAR PROTECTED
-            tws : TransportWindows;
+            tws : TransportWindowList;
             enc : EncoderMock;
             v1 : VirtualTrigger := (Position := 100, Id := UINT#1);
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);

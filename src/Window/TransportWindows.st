@@ -19,8 +19,16 @@ NAMESPACE Simatic.Ax.WindowTracking
             BUF_SIZE : UINT := UINT#100;
         END_VAR
 
-        METHOD PUBLIC Create
+        METHOD PUBLIC Create : ITransportWindow
+            IF (Encoder = NULL) THEN
+                Create := NULL;
+                RETURN;
+            END_IF;
+
             _tranportWindowList[_head] := _tranportWindowListStorage[_head];
+            _tranportWindowList[_head].CalcPosition(Encoder);
+            Create := _tranportWindowList[_head];
+
             _head := _head + UINT#1;
             _head := _head MOD BUF_SIZE;
         END_METHOD
@@ -45,18 +53,25 @@ NAMESPACE Simatic.Ax.WindowTracking
             Count := ((_head - _tail) + BUF_SIZE) MOD BUF_SIZE;
         END_METHOD
 
-        METHOD PUBLIC Evaluate
+        METHOD PUBLIC Evaluate : BOOL
             VAR_TEMP
                 i : UINT;
                 o : ITransportWindow;
             END_VAR
+
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
                 o := _tranportWindowList[(_tail + i) MOD BUF_SIZE];
                 IF (o <> NULL) THEN
                     o.CalcPosition(enc := Encoder);
-                    TriggerPointList.Check(o);
+                    IF (TriggerPointList <> NULL) THEN
+                        TriggerPointList.Check(o);
+                        Evaluate := TRUE;
+                    ELSE
+                        Evaluate := FALSE;
+                    END_IF;
                 END_IF;
             END_FOR;
+            
         END_METHOD
     END_CLASS
 END_NAMESPACE

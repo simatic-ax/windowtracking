@@ -8,10 +8,10 @@ NAMESPACE Simatic.Ax.WindowTracking
         END_VAR
         VAR PROTECTED
             _actualPos : DINT;
-            _lastPos : DINT;
+            _lastPos : DINT := -1;
         END_VAR
         
-        METHOD PUBLIC CalcPosition
+        METHOD PUBLIC CalcPosition : BOOL
             VAR_INPUT
                 enc : IEncoder;
             END_VAR
@@ -19,10 +19,18 @@ NAMESPACE Simatic.Ax.WindowTracking
                 _newPos : DINT;
                 _difference : DINT;
             END_VAR
+            IF enc = NULL THEN
+                CalcPosition := FALSE;
+                RETURN;
+            END_IF;
+            IF (_lastPos = -1) THEN
+                _lastPos := enc.GetValue();
+            END_IF;
             _newPos := enc.GetValue();
-            _difference := (_newPos - _lastPos) MOD enc.GetModulo();
+            _difference := (_newPos - _lastPos + enc.GetModulo()) MOD enc.GetModulo();
             _actualPos := _actualPos + _difference;
             _lastPos := _newPos;
+            CalcPosition := TRUE; 
         END_METHOD
 
         METHOD PUBLIC GetPosition : DINT
@@ -70,7 +78,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD PUBLIC Reset
             // Destination1 := NULL;
             _actualPos := 0;
-            _lastPos := 0;
+            _lastPos := -1;
         END_METHOD
 END_CLASS
 END_NAMESPACE

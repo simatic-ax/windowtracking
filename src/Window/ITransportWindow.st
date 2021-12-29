@@ -17,7 +17,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD Reset
         END_METHOD
 
-        METHOD CalcPosition
+        METHOD CalcPosition : BOOL
             VAR_INPUT
                 enc : IEncoder;
             END_VAR

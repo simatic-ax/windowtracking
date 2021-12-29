@@ -1,0 +1,66 @@
+USING AxUnit.Assert;
+USING Simatic.Ax.WindowTracking.Trigger;
+USING Simatic.Ax.SimpleControlModules;
+
+
+NAMESPACE Simatic.Ax.WindowTracking
+    {TestFixture}
+    CLASS Test_TransportWindowList
+        
+        VAR PROTECTED
+            tw : TransportWindow;
+            enc : EncoderMock;
+        END_VAR
+        
+        // METHOD PROTECTED Setup
+        //     tw.Encoder := enc;
+        //     v1.EventHandler := te1;
+        //     v2.EventHandler := te2;
+        //     tl.Add(v1);
+        //     tl.Add(v2);
+        //     tws.TriggerPointList := tl;
+        // END_METHOD
+
+        {Test}
+        METHOD PUBLIC CalcPosition_of_different_encoder_positions_starting_with_0
+            enc.EncoderValue := 0;
+            tw.CalcPosition(enc);
+            Equal(expected := 0, actual := tw.GetPosition());
+
+            enc.EncoderValue := 10;
+            tw.CalcPosition(enc);
+            Equal(expected := 10, actual := tw.GetPosition());
+
+            enc.EncoderValue := 4095;
+            tw.CalcPosition(enc);
+            Equal(expected := 4095, actual := tw.GetPosition());
+
+            enc.EncoderValue := 1;
+            tw.CalcPosition(enc);
+            Equal(expected := 4097, actual := tw.GetPosition());
+
+        END_METHOD
+
+        {Test}
+        METHOD PUBLIC CalcPosition_of_different_encoder_positions_starting_with_100
+            enc.EncoderValue := 100;
+            tw.CalcPosition(enc);
+            Equal(expected := 0, actual := tw.GetPosition());
+
+            enc.EncoderValue := 110;
+            tw.CalcPosition(enc);
+            Equal(expected := 10, actual := tw.GetPosition());
+
+            enc.EncoderValue := 4095;
+            tw.CalcPosition(enc);
+            Equal(expected := 3995, actual := tw.GetPosition());
+
+            enc.EncoderValue := 1;
+            tw.CalcPosition(enc);
+            Equal(expected := 3997, actual := tw.GetPosition());
+
+        END_METHOD
+
+    END_CLASS
+
+END_NAMESPACE

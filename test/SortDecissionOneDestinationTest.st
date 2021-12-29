@@ -2,6 +2,7 @@ USING AxUnit.Assert;
 USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.WindowTracking.Items;
+USING Simatic.Ax.WindowTracking.ExitPointHandler;
 
 NAMESPACE Simatic.Ax.WindowTracking.SortDecission
     {TestFixture}

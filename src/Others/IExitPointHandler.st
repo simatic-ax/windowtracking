@@ -1,4 +1,4 @@
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+NAMESPACE Simatic.Ax.WindowTracking.ExitPointHandler
     INTERFACE IExitPointHandler
         METHOD IsReady : BOOL
         END_METHOD

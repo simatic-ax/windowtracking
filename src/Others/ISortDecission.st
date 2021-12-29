@@ -1,5 +1,6 @@
-USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
+USING Simatic.Ax.WindowTracking.ExitPointHandler;
+
 NAMESPACE Simatic.Ax.WindowTracking.SortDecission
     INTERFACE ISortDecission
         METHOD Check : BOOL

@@ -1,10 +1,11 @@
-USING Simatic.Ax.WindowTracking.Exits;
+USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.WindowTracking.Trigger;
+USING Simatic.Ax.WindowTracking.Events;
 
 NAMESPACE Simatic.Ax.WindowTracking.EventHandler
     CLASS SortDecissionOneDestination IMPLEMENTS ISortDecission
         VAR PUBLIC
-            
+
         END_VAR
         VAR PROTECTED
             
@@ -12,33 +13,26 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
     
         METHOD PUBLIC Check : BOOL
             VAR_INPUT
-                o : ITransportWindow;
+                tw : ITransportWindow;
+                te : IVirtualTrigger;
+                exitpoint : IExitPoint;
             END_VAR
-            
             VAR_TEMP
-                i : UINT;
-                _tp : IVirtualTrigger;
-                _exit : IExit;
+                _item : REF_TO ItemOneDestination;
             END_VAR
-            ;
-            // Check the destination. Only one Destination is valid!
-            // IF (o.GetTriggerPointCount() = UINT#1) THEN 
-            //     _tp := o.GetTriggerPoint(UINT#0);
-            //     // _exit := o.GetExit();
-                
-            //     IF (NOT(_tp.IsEnabled())) THEN
-            //         Check := FALSE;
-            //         RETURN;
-            //     END_IF;
-
-            //     IF (NOT(_exit.IsReady())) THEN
-            //         Check := FALSE;
-            //         RETURN;
-            //     END_IF;
-                
-            //     Check := TRUE;
-
-            // END_IF;
+            _item ?= tw.GetItem();
+            IF (_item = NULL) THEN
+                Check := FALSE;
+                RETURN;
+            END_IF;
+            IF (NOT exitpoint.IsReady()) THEN
+                Check := FALSE;
+                RETURN;
+            END_IF;
+            IF (_item^.GetDestination() = te) THEN
+                Check := TRUE;
+                RETURN;
+            END_IF;
         END_METHOD
     END_CLASS
 END_NAMESPACE

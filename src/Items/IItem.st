@@ -1,0 +1,4 @@
+NAMESPACE Simatic.Ax.WindowTracking.Items
+    INTERFACE IItem
+    END_INTERFACE
+END_NAMESPACE

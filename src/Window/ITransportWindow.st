@@ -1,4 +1,4 @@
-USING Simatic.Ax.WindowTracking.Exits;
+USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
@@ -14,6 +14,9 @@ NAMESPACE Simatic.Ax.WindowTracking
         END_METHOD
 
         METHOD GetPosition : DINT
+        END_METHOD
+
+        METHOD GetItem : IItem
         END_METHOD
 
     END_INTERFACE

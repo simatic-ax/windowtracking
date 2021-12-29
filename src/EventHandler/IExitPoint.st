@@ -1,5 +1,5 @@
-NAMESPACE Simatic.Ax.WindowTracking.Exits
-    INTERFACE IExit
+NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+    INTERFACE IExitPoint
         METHOD IsReady : BOOL
         END_METHOD
     END_INTERFACE

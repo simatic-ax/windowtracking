@@ -1,7 +1,6 @@
 USING AxUnit.Assert;
 USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.Events;
 USING Simatic.Ax.WindowTracking.Items;
 
 NAMESPACE Simatic.Ax.WindowTracking.SortDecission
@@ -11,7 +10,8 @@ NAMESPACE Simatic.Ax.WindowTracking.SortDecission
             sd : SortDecissionOneDestination;
             tw : TransportWindow;
             te : VirtualTrigger;
-            ep : ExitPoint;
+            te_notok : VirtualTrigger;
+            ep : SortDecissionEvent;
             eph : ExitEventHandlerMock;
             item : ItemOneDestination;
         END_VAR
@@ -19,9 +19,11 @@ NAMESPACE Simatic.Ax.WindowTracking.SortDecission
         METHOD PROTECTED Setup
             item.Destination1 := te;
             tw.Item := item;
+            
             te.Id := UINT#1;
             te.Position := 1000;
             te.EventHandler := ep;
+            
             ep.SortDecission := sd;
             ep.ExitHandler := eph;
         END_METHOD
@@ -35,6 +37,17 @@ NAMESPACE Simatic.Ax.WindowTracking.SortDecission
             _check := sd.Check(tw := tw, te := te, exitpoint := eph);
             Equal(expected := TRUE, actual := _check);
         END_METHOD
+        
+        {Test}
+        METHOD PUBLIC Check_SortdecissonNotOk
+            VAR_TEMP
+                _check : BOOL;
+            END_VAR
+            THIS.Setup();
+            _check := sd.Check(tw := tw, te := te_notok, exitpoint := eph);
+            Equal(expected := FALSE, actual := _check);
+        END_METHOD
+    
     END_CLASS
 
     CLASS ExitEventHandlerMock IMPLEMENTS IExitPointHandler

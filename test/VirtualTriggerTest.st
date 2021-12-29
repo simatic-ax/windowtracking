@@ -1,6 +1,6 @@
 USING AxUnit.Assert;
 USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.Events;
+USING Simatic.Ax.WindowTracking.EventHandler;
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
     {TestFixture}
     CLASS TestVirtualTrigger

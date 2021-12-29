@@ -1,6 +1,6 @@
 USING Simatic.Ax.WindowTracking.Trigger;
 
-NAMESPACE Simatic.Ax.WindowTracking.Events
+NAMESPACE Simatic.Ax.WindowTracking.EventHandler
     INTERFACE ITriggerEvent
         METHOD Action : EventStatus
             VAR_INPUT

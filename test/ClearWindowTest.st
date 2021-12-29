@@ -1,5 +1,5 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.Events;
+USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.EventHandler
@@ -11,7 +11,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             v1 : VirtualTrigger := (Position := 100, Id := UINT#1);
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);
             te1 : TriggerEventMock;
-            te2 : ClearWindow;
+            te2 : ClearWindowEvent;
             tl : TriggerList;
         END_VAR
         

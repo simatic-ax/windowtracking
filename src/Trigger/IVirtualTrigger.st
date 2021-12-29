@@ -1,4 +1,4 @@
-USING Simatic.Ax.WindowTracking.Events;
+USING Simatic.Ax.WindowTracking.EventHandler;
 
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
     INTERFACE IVirtualTrigger

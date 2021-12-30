@@ -11,7 +11,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             v1 : VirtualTrigger := (Position := 100, Id := UINT#1);
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);
             te1 : TriggerEventMock;
-            te2 : ClearWindowEvent;
+            te2 : TerminateWindowEvent;
             tl : TriggerList;
         END_VAR
         

@@ -25,7 +25,7 @@ NAMESPACE Simatic.Ax.WindowTracking.SortDecission
             te.Position := 1000;
             te.EventHandler := ep;
             
-            ep.SortDecission := sd;
+            ep.SortStrategy := sd;
             ep.ExitHandler := eph;
         END_METHOD
 

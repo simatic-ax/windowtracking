@@ -2,7 +2,7 @@ USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS TransportWindowList IMPLEMENTS ITransportWindowsCleanup
+    CLASS TransportWindowList IMPLEMENTS ITransportWindowsTerminate
         VAR PUBLIC
             Encoder : IEncoder;
             TriggerPointList : ITriggerList;
@@ -33,7 +33,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             _head := _head MOD BUF_SIZE;
         END_METHOD
 
-        METHOD PUBLIC Remove 
+        METHOD PUBLIC Terminate 
             IF (_tranportWindowList[_tail] <> NULL) THEN
                 _tranportWindowListStorage[_tail].Reset();
                 _tranportWindowList[_tail] := NULL;

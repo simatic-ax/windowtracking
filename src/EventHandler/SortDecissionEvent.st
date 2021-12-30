@@ -7,7 +7,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
     CLASS SortDecissionEvent IMPLEMENTS ITriggerEvent
 
         VAR PUBLIC
-            SortDecission : ISortDecission;
+            SortStrategy : ISortStrategy;
             ExitHandler : IExitPointHandler;
         END_VAR
     
@@ -20,7 +20,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
                 _check : BOOL;
             END_VAR
             
-            IF (SortDecission = NULL) THEN
+            IF (SortStrategy = NULL) THEN
                 Action := EventStatus#NullReference;
                 RETURN;
             END_IF;
@@ -29,7 +29,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
                 RETURN;
             END_IF;
 
-            _check := SortDecission.Check(tw := tw, te := te, exitpoint := ExitHandler);
+            _check := SortStrategy.Check(tw := tw, te := te, exitpoint := ExitHandler);
             
             IF (_check) THEN
                 ExitHandler.Activate();

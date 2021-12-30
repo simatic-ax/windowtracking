@@ -1,9 +1,9 @@
 USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.EventHandler
-    CLASS ClearWindowEvent IMPLEMENTS ITriggerEvent
+    CLASS TerminateWindowEvent IMPLEMENTS ITriggerEvent
         VAR PUBLIC
-            WindowList : ITransportWindowsCleanup;
+            WindowList : ITransportWindowsTerminate;
         END_VAR
     
         METHOD PUBLIC Action : EventStatus
@@ -12,7 +12,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
                 tw : ITransportWindow;
             END_VAR
             // Remove oldest window from list 
-            WindowList.Remove();
+            WindowList.Terminate();
             ;
         END_METHOD
     END_CLASS

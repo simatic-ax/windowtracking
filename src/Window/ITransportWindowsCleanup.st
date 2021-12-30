@@ -2,10 +2,10 @@ USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
-    INTERFACE ITransportWindowsCleanup
+    INTERFACE ITransportWindowsTerminate
 
 
-        METHOD Remove 
+        METHOD Terminate 
         END_METHOD
 
     END_INTERFACE

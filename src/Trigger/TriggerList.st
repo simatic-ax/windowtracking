@@ -1,9 +1,5 @@
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS TriggerList IMPLEMENTS ITriggerList
-        VAR PUBLIC
-            PositiveTolerace : DINT := 5;
-            NegativeTolerance : DINT := 5;
-        END_VAR
         VAR PROTECTED
             _triggerPointList : ARRAY[UINT#0..BUF_SIZE - UINT#1] OF IVirtualTrigger;
             _count : UINT;

@@ -35,7 +35,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         {Test}
         METHOD PUBLIC Remove_Window_fom_empty_list_expect_0
             THIS.Setup();
-            tws.Remove();
+            tws.Terminate();
             Equal(expected := UINT#0, actual := tws.Count());
         END_METHOD
 
@@ -55,35 +55,35 @@ NAMESPACE Simatic.Ax.WindowTracking
         {Test}
         METHOD PUBLIC Remove_1of_4_windows_expect_count_3
             THIS.Create_4Windows_And_Call_Count_Expect_4();
-            tws.Remove();
+            tws.Terminate();
             Equal(expected := UINT#3, actual := tws.Count());
         END_METHOD
 
         {Test}
         METHOD PUBLIC Remove_4of_4_windows_expect_count_0
             THIS.Create_4Windows_And_Call_Count_Expect_4();
-            tws.Remove();
-            tws.Remove();
-            tws.Remove();
-            tws.Remove();
+            tws.Terminate();
+            tws.Terminate();
+            tws.Terminate();
+            tws.Terminate();
             Equal(expected := UINT#0, actual := tws.Count());
         END_METHOD
 
         {Test}
         METHOD PUBLIC Remove_5of_4_windows_expect_count_0
             THIS.Create_4Windows_And_Call_Count_Expect_4();
-            tws.Remove();
-            tws.Remove();
-            tws.Remove();
-            tws.Remove();
-            tws.Remove();
+            tws.Terminate();
+            tws.Terminate();
+            tws.Terminate();
+            tws.Terminate();
+            tws.Terminate();
             Equal(expected := UINT#0, actual := tws.Count());
         END_METHOD
 
         {Test}
         METHOD PUBLIC Remove_1of_4_andd_a_1_windows_expect_count_4
             THIS.Create_4Windows_And_Call_Count_Expect_4();
-            tws.Remove();
+            tws.Terminate();
             tws.Create();
             Equal(expected := UINT#4, actual := tws.Count());
         END_METHOD

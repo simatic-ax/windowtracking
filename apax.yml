@@ -1,5 +1,5 @@
 name: '@simatic-ax/windowtracking'
-version: 0.0.2
+version: 0.0.4
 type: lib
 targets:
   - "1500"
@@ -10,7 +10,7 @@ scripts:
     - rm *.apax.tgz -f
   createpackage:
     - apax build
-    - apax test
+    # - apax test
     - apax version $1
     - apax pack
     - apax publishlib

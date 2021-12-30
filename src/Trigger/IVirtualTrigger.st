@@ -24,6 +24,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         METHOD Check : BOOL
             VAR_INPUT
                tw : ITransportWindow;
+               ll : DINT;
+               ul : DINT;
             END_VAR
        END_METHOD
 

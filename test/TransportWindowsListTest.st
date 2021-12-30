@@ -14,7 +14,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);
             te1 : TriggerEventMock;
             te2 : TriggerEventMock;
-            tl : TriggerList;
+            tl : VirtualTriggerList;
         END_VAR
         
         METHOD PROTECTED Setup

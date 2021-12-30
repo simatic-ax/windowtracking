@@ -6,8 +6,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Position : DINT;
             Id : UINT;
             EventHandler : ITriggerEvent;
-            PositiveTolerace : DINT := 5;
-            NegativeTolerance : DINT := 5;
+            PositiveTolerace : DINT := -1;
+            NegativeTolerance : DINT := -1;
         END_VAR
 
         VAR PROTECTED
@@ -53,12 +53,26 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         METHOD PUBLIC Check : BOOL
             VAR_INPUT
                 tw : ITransportWindow;
+                ll : DINT;
+                ul : DINT;
             END_VAR
             VAR_TEMP
                 _inRange : BOOL;
                 _activateRis : BOOL;
+                _ul : DINT;
+                _ll : DINT;
             END_VAR
-            _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := PositiveTolerace, ll := NegativeTolerance);
+            IF (PositiveTolerace = -1) THEN
+                _ul := ul;
+            ELSE 
+                _ul := PositiveTolerace;
+            END_IF;
+            IF (NegativeTolerance = -1) THEN
+                _ll := ll;
+            ELSE 
+                _ll := NegativeTolerance;
+            END_IF;
+            _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := _ul, ll := _ll);
             _activateRis := _inRange AND NOT _activateOld;
             _activateOld := _inRange;
             IF (_activateRis) THEN

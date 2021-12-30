@@ -4,7 +4,7 @@ USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.EventHandler
     {TestFixture}
-    CLASS ClearWindowTest
+    CLASS TerminateWindowTest
         VAR PROTECTED
             tws : TransportWindowList;
             enc : EncoderMock;
@@ -12,7 +12,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);
             te1 : TriggerEventMock;
             te2 : TerminateWindowEvent;
-            tl : TriggerList;
+            tl : VirtualTriggerList;
         END_VAR
         
         METHOD PROTECTED Setup

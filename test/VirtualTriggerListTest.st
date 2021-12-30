@@ -4,7 +4,7 @@ NAMESPACE Simatic.Ax.WindowTracking.VirtualTrigger
     {TestFixture}
     CLASS TestVirtualTriggerList
         VAR PROTECTED
-            tl : TriggerList;
+            tl : VirtualTriggerList;
             trig1 : VirtualTrigger := (Id := UINT#1, Position := 1100);
             trig2 : VirtualTrigger := (Id := UINT#2, Position := 1200);
             trig3 : VirtualTrigger := (Id := UINT#3, Position := 1300);

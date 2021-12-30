@@ -76,13 +76,13 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             _activateRis := _inRange AND NOT _activateOld;
             _activateOld := _inRange;
             IF (_activateRis) THEN
-                _isActiavted := TRUE;
                 THIS.ActivateEvent(tw);
             END_IF;
-            ;
+            _isActiavted := _activateRis;
+            Check := _isActiavted;
         END_METHOD
 
-        METHOD PUBLIC InRange : BOOL
+        METHOD PRIVATE InRange : BOOL
             VAR_INPUT
                sp : DINT;
                value : DINT;

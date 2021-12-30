@@ -356,25 +356,19 @@
   resolved "https://npm.pkg.github.com/download/@simatic-ax/collections/0.1.1/1a134107be2cf72cae266ad0925fb1fe371d5e6f4af89d5d6cb804a5eea70fe8#c98dc6b4689d72b1054f3300ce2e400238462eef"
   integrity sha512-lcBhatD2R0qxBcnCUfW9f+C5pHbZyFeYmdR3lyXAcQXLHpgqnXeSPJhSSfjvOR/TPqX7Y8g/BnXJo4MUv08jRQ==
 
-"@simatic-ax/io@0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/io/0.1.1/ecfd2f7ee4d4fe3bc45451ae01b76f28a4b7cf9980cc67b1196988723a40f40b#f9ab9f58e7062f257e573a852d88f50a0a23e946"
-  integrity sha512-CoPqx/TzLaNHegEttza1BIpWT51FBcdtK67seug364J1ztjpQ5C0us9YoVfS6lwKzTVDMfvsEF5vbBBsCwgJvQ==
+"@simatic-ax/io@0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@simatic-ax/io/0.1.2/cccc8578a6457259624aa29e95b39dcf370a9740047c3674bc21f5afdfa4ff6d#32cc0c677a41aee0d6d708201b8a119c465cd244"
+  integrity sha512-thronyBmoQMDUrUgLKYRVxPJLOBdiqdS9G2+luXMGfRq6OaqpkoAxOBpccmALLiz2Wm/jOpXCjqIB4vtJRY1QA==
   dependencies:
     "@ax/system-timer" "1.0.12"
-    "@simatic-ax/mocks" "0.1.1"
 
-"@simatic-ax/mocks@0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/mocks/0.1.1/ac68cab01ebeabeea6e39e9eb1e2436bceb0ed98e2e92de2d9e870f75c66ac7e#4ecb4f4a89cade6bfca1cdc33eb5a610d0ab4293"
-  integrity sha512-P6DmR1gtpUzhvKxQhXJwnIK8RKD3tux+IQS6boaYsIXIb2H2uhNrm/1nwb6EdDu9syiYSVVmrfywuyWh0dNvLQ==
-
-"@simatic-ax/simple-control-modules@0.0.2":
-  version "0.0.2"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.0.2/f9e344f287a200d3176f7a13115cf78934d18f794f9c96a44fde2233a94e3293#17b60d67000021064ac3a7b6be851b2d2fa89442"
-  integrity sha512-1vwzj0wMA9VEZvbWDSFYLlzSi/N/5XGqv76pcCsXQaaUzWmJ4WJU4EOs+PPdePy1JKT3JefnJEczLio6skEfcQ==
+"@simatic-ax/simple-control-modules@0.0.3":
+  version "0.0.3"
+  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.0.3/cc138a9c76823a4c37437adf267b88493cba788204252f026a02608b7ca5fcb0#b90c7dca91b80dced7a222789043a2beb688a2da"
+  integrity sha512-G/KdQGr9HfUGcP4MNXDPzsIAXeH1p/9R2bkzwb+I3huFMR8mnv2zqUYzvoA4zbrK1y8xSNqfLvkpxWG5jn853Q==
   dependencies:
-    "@simatic-ax/io" "0.1.1"
+    "@simatic-ax/io" "0.1.2"
 
 "@simatic-ax/snippetscollection@0.0.4":
   version "0.0.4"

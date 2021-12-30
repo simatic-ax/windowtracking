@@ -1,14 +1,31 @@
 name: '@simatic-ax/windowtracking'
-version: 0.0.0
+version: 0.0.1
 type: lib
 targets:
   - "1500"
   - axunit-llvm
+scripts:
+  publishlib:
+    - apax publish --package *.apax.tgz --registry 'https://npm.pkg.github.com/'
+    - rm *.apax.tgz -f
+  createpackage:
+    - apax build
+    - apax test
+    - apax version $1
+    - apax pack
+    - apax publishlib
 devDependencies:
   "@ax/sdk": 1.0.127
   "@simatic-ax/snippetscollection": 0.0.4
 dependencies:
-  "@simatic-ax/simple-control-modules": 0.0.2
+  "@simatic-ax/simple-control-modules": 0.0.3
   "@simatic-ax/collections": 0.1.1
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
+
+files:
+  - 'README.md'
+  - 'LICENSE.md'
+  - 'doc'
+  - 'src' # ship library with source
+  # - 'library/1500/'   # ship library with binary

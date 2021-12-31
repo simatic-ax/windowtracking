@@ -8,6 +8,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             vt : VirtualTrigger;
             evt : TriggerEventMock;
             tw : TransportWindow;
+            enc : EncoderMock;
         END_VAR
 
         METHOD PRIVATE SetupTestTrigger
@@ -73,16 +74,86 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             VAR_TEMP
                 r : BOOL;
             END_VAR   
+            
             vt.Position := sp;  
             r := vt.Check(tw := tw, ul := 5, ll := 5);
             Equal(expected := res, actual := r);
             Equal(expected := res, actual := vt.IsActivated());
+            
             r := vt.Check(tw := tw, ul := 5, ll := 5);
             Equal(expected := FALSE, actual := r);
-            Equal(expected := FALSE, actual := vt.IsActivated());
+            Equal(expected := res, actual := vt.IsActivated());
         END_METHOD
  
 
+        {Test}
+        METHOD PUBLIC TestCheckforRisingEdge_expect_just_one_rising_edge
+
+
+            vt.Position := 100;
+
+            enc.EncoderValue := 0;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 0, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+            
+            enc.EncoderValue := 1;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 1, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+            
+            enc.EncoderValue := 94;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 94, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 95;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 95, actual := tw.GetPosition());
+            Equal(expected := TRUE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 96;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 96, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+            
+            enc.EncoderValue := 97;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 97, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 98;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 98, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 105;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 105, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 194;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 194, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            tw.Reset();
+            enc.EncoderValue := 194;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 0, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 288;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 94, actual := tw.GetPosition());
+            Equal(expected := FALSE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+            enc.EncoderValue := 289;
+            tw.CalcPosition(enc := enc);
+            Equal(expected := 95, actual := tw.GetPosition());
+            Equal(expected := TRUE, actual := vt.Check(tw := tw, ul := 5, ll := 5));
+
+        END_METHOD
 
     END_CLASS
 

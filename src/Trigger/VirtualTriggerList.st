@@ -58,6 +58,10 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 i : UINT;
                 o : IVirtualTrigger;
             END_VAR
+            IF (THIS.Count() <= UINT#0) THEN
+                Check := FALSE;
+                RETURN;
+            END_IF;
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
                 o := _triggerPointList[i];
                 IF (o <> NULL) THEN

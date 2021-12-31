@@ -11,8 +11,9 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         END_VAR
 
         VAR PROTECTED
-            _isActiavted : BOOL;
-            _activateOld : BOOL;
+            _isActiavted : BOOL; // Occupied by window don't accept new windows
+            _isActiavtedOld : BOOL;
+            _ActiveWindow : ITransportWindow;
         END_VAR
 
         METHOD PUBLIC ActivateEvent : EventStatus
@@ -58,7 +59,9 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_VAR
             VAR_TEMP
                 _inRange : BOOL;
-                _activateRis : BOOL;
+                _isActivatedRis : BOOL;
+                _isActivatedFal : BOOL;
+                _windowInRange : BOOL;
                 _ul : DINT;
                 _ll : DINT;
             END_VAR
@@ -72,14 +75,33 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             ELSE 
                 _ll := NegativeTolerance;
             END_IF;
+            
             _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := _ul, ll := _ll);
-            _activateRis := _inRange AND NOT _activateOld;
-            _activateOld := _inRange;
-            IF (_activateRis) THEN
-                THIS.ActivateEvent(tw);
-            END_IF;
-            _isActiavted := _activateRis;
-            Check := _isActiavted;
+            _isActivatedFal := NOT _inRange AND _isActiavtedOld;  //outgoing window
+            _isActivatedRis := _inRange AND NOT _isActiavtedOld;  //incoming window
+            _isActiavtedOld := _inRange;
+
+            IF (_ActiveWindow = NULL) THEN
+                // no window in focus --> aacept new one
+                IF (_isActivatedRis) THEN
+                    _ActiveWindow := tw;
+                    THIS.ActivateEvent(tw);
+                    Check := TRUE;
+                    _isActiavted := TRUE;
+                END_IF;
+            ELSIF (_ActiveWindow <> tw) THEN
+                // windows in focus, but not the actual tw
+                Check := FALSE;
+                RETURN;
+            ELSE 
+                // windows in focus --> reject new windows
+                IF (_isActivatedFal) THEN 
+                    _ActiveWindow := NULL;
+                    _isActiavted := FALSE;
+                END_IF;
+                Check := FALSE;
+                RETURN;
+            END_IF;            
         END_METHOD
 
         METHOD PRIVATE InRange : BOOL

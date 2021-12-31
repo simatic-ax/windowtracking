@@ -10,7 +10,6 @@ NAMESPACE Simatic.Ax.WindowTracking
         VAR PROTECTED
             _tranportWindowList : ARRAY[UINT#0..BUF_SIZE - UINT#1] OF ITransportWindow;
             _tranportWindowListStorage : ARRAY[UINT#0..BUF_SIZE - UINT#1] OF TransportWindow;
-            _count : UINT;
             _head : UINT;
             _tail : UINT;
         END_VAR
@@ -59,6 +58,9 @@ NAMESPACE Simatic.Ax.WindowTracking
                 o : ITransportWindow;
             END_VAR
 
+            IF (THIS.Count() <= UINT#0) THEN
+                RETURN;
+            END_IF;
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
                 o := _tranportWindowList[(_tail + i) MOD BUF_SIZE];
                 IF (o <> NULL) THEN

@@ -19,5 +19,11 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD GetItem : IItem
         END_METHOD
 
+        METHOD SetItem
+            VAR_INPUT
+                i : IItem;
+            END_VAR
+        END_METHOD
+
     END_INTERFACE
 END_NAMESPACE

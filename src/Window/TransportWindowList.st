@@ -1,5 +1,6 @@
 USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
+USING Simatic.Ax.WindowTracking.Items;
 
 NAMESPACE Simatic.Ax.WindowTracking
     CLASS TransportWindowList IMPLEMENTS ITransportWindowsTerminate
@@ -19,6 +20,9 @@ NAMESPACE Simatic.Ax.WindowTracking
         END_VAR
 
         METHOD PUBLIC Create : ITransportWindow
+            VAR_INPUT
+                i : IItem;
+            END_VAR
             IF (Encoder = NULL) THEN
                 Create := NULL;
                 RETURN;
@@ -26,6 +30,7 @@ NAMESPACE Simatic.Ax.WindowTracking
 
             _tranportWindowList[_head] := _tranportWindowListStorage[_head];
             _tranportWindowList[_head].CalcPosition(Encoder);
+            _tranportWindowList[_head].SetItem(i);
             Create := _tranportWindowList[_head];
 
             _head := _head + UINT#1;

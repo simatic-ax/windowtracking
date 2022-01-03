@@ -45,5 +45,13 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD PUBLIC GetItem : IItem
             GetItem := Item;
         END_METHOD
-    END_CLASS
+    
+        METHOD PUBLIC SetItem
+            VAR_INPUT
+                i : IItem;
+            END_VAR
+            Item := i;
+            ;
+        END_METHOD
+END_CLASS
 END_NAMESPACE

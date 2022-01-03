@@ -1,5 +1,4 @@
 USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.Items
     CLASS ItemOneDestination IMPLEMENTS IItem

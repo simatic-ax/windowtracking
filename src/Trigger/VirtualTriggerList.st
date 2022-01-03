@@ -68,6 +68,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                     o.Check(tw := tw, ll := NegativeTolerance, ul := PositiveTolerace);
                 END_IF;
             END_FOR;
+            Check := TRUE; 
         END_METHOD
 
     END_CLASS

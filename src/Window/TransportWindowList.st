@@ -22,6 +22,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD PUBLIC Create : ITransportWindow
             VAR_INPUT
                 i : IItem;
+                // TODO offset
             END_VAR
             IF (Encoder = NULL) THEN
                 Create := NULL;

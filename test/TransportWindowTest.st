@@ -11,15 +11,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             tw : TransportWindow;
             enc : EncoderMock;
         END_VAR
-        
-        // METHOD PROTECTED Setup
-        //     tw.Encoder := enc;
-        //     v1.EventHandler := te1;
-        //     v2.EventHandler := te2;
-        //     tl.Add(v1);
-        //     tl.Add(v2);
-        //     tws.TriggerPointList := tl;
-        // END_METHOD
+
 
         {Test}
         METHOD PUBLIC CalcPosition_of_different_encoder_positions_starting_with_0

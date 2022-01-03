@@ -1,4 +1,5 @@
 USING Simatic.Ax.WindowTracking.EventHandler;
+
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS VirtualTrigger IMPLEMENTS IVirtualTrigger
 
@@ -7,13 +8,17 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Id : UINT;
             EventHandler : ITriggerEvent;
             PositiveTolerace : DINT := -1;
-            NegativeTolerance : DINT := -1;
+            NegativeTolerance : DINT := -1;            
         END_VAR
 
         VAR PROTECTED
-            _isActiavted : BOOL; // Occupied by window don't accept new windows
-            _isActiavtedOld : BOOL;
-            _ActiveWindow : ITransportWindow;
+            _activeWindow : ITransportWindow;
+            _checkState : INT;
+        END_VAR
+
+        VAR CONSTANT PRIVATE  
+            EXPECT_WINDOW_IN_RANGE : INT := 0; // Wait for Window in Range
+            EXPECT_END_OF_WINDOW : INT := 1;
         END_VAR
 
         METHOD PUBLIC ActivateEvent : EventStatus
@@ -36,7 +41,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         END_METHOD
 
         METHOD PUBLIC IsActivated : BOOL
-            IsActivated := _isActiavted;
+            IsActivated := _activeWindow <> NULL;
         END_METHOD
 
         METHOD PUBLIC GetID : UINT
@@ -59,12 +64,10 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_VAR
             VAR_TEMP
                 _inRange : BOOL;
-                _isActivatedRis : BOOL;
-                _isActivatedFal : BOOL;
-                _windowInRange : BOOL;
                 _ul : DINT;
                 _ll : DINT;
             END_VAR
+
             IF (PositiveTolerace = -1) THEN
                 _ul := ul;
             ELSE 
@@ -75,33 +78,30 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             ELSE 
                 _ll := NegativeTolerance;
             END_IF;
-            
-            _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := _ul, ll := _ll);
-            _isActivatedFal := NOT _inRange AND _isActiavtedOld;  //outgoing window
-            _isActivatedRis := _inRange AND NOT _isActiavtedOld;  //incoming window
-            _isActiavtedOld := _inRange;
 
-            IF (_ActiveWindow = NULL) THEN
-                // no window in focus --> aacept new one
-                IF (_isActivatedRis) THEN
-                    _ActiveWindow := tw;
-                    THIS.ActivateEvent(tw);
+            IF (_checkState = EXPECT_WINDOW_IN_RANGE) THEN
+                _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := _ul, ll := _ll);
+                IF (_inRange) THEN
+                    _activeWindow := tw;
+                    _checkState := EXPECT_END_OF_WINDOW;
+                    IF (EventHandler <> NULL) THEN
+                        EventHandler.Action(tw := tw, te := THIS);
+                    END_IF;
                     Check := TRUE;
-                    _isActiavted := TRUE;
                 END_IF;
-            ELSIF (_ActiveWindow <> tw) THEN
-                // windows in focus, but not the actual tw
-                Check := FALSE;
-                RETURN;
-            ELSE 
-                // windows in focus --> reject new windows
-                IF (_isActivatedFal) THEN 
-                    _ActiveWindow := NULL;
-                    _isActiavted := FALSE;
+            ELSIF (_checkState = EXPECT_END_OF_WINDOW) THEN
+                // Reject all Windows exept active window
+                IF (tw <> _activeWindow) THEN
+                    Check := FALSE;
+                    RETURN;
                 END_IF;
-                Check := FALSE;
-                RETURN;
-            END_IF;            
+                _inRange := THIS.InRange(sp := Position, value := tw.GetPosition(), ul := _ul, ll := _ll);
+                IF (NOT _inRange) THEN
+                    _activeWindow := NULL;
+                    _checkState := EXPECT_WINDOW_IN_RANGE;
+                    Check := FALSE;
+                END_IF;
+            END_IF;        
         END_METHOD
 
         METHOD PRIVATE InRange : BOOL

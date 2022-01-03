@@ -45,8 +45,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             THIS.SetupTestTrigger();
             Equal(expected := UINT#10, actual := vt.GetId());
         END_METHOD
+        
         {Test}
-
         METHOD PUBLIC Test_GetPosition_And_Expect_1000
             THIS.SetupTestTrigger();
             Equal(expected := UINT#1000, actual := vt.GetPosition());

@@ -79,7 +79,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             
             enc.EncoderValue := 106;
             twl.Evaluate();
-            Equal(expected := TRUE, actual :=  tp1.IsActivated());
+            Equal(expected := FALSE, actual :=  tp1.IsActivated());
             Equal(expected := 1, actual := hdl.Count);    
         END_METHOD
 

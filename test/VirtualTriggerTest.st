@@ -160,7 +160,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS TriggerEventMock IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             Id : UINT;
-            Calls : INT;
+            Calls : DINT;
+            CallsAfter : DINT;
         END_VAR
         VAR PROTECTED
             
@@ -177,5 +178,14 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Calls := Calls + 1;
         END_METHOD
 
+    
+        METHOD PUBLIC ActionAfter : EventStatus
+            VAR_INPUT
+                te : IVirtualTrigger;
+                tw : ITransportWindow;
+            END_VAR
+            CallsAfter := CallsAfter + 1;
+            ;
+        END_METHOD
     END_CLASS
 END_NAMESPACE

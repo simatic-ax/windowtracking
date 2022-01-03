@@ -88,6 +88,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS EventHandlerTest IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             Count : DINT;
+            CallsAfter : DINT;
         END_VAR    
     
         METHOD PUBLIC Action : EventStatus    
@@ -96,6 +97,15 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 tw : ITransportWindow;
             END_VAR
             Count := Count + 1;
+        END_METHOD
+    
+        METHOD PUBLIC ActionAfter : EventStatus
+            VAR_INPUT
+                te : IVirtualTrigger;
+                tw : ITransportWindow;
+            END_VAR
+            CallsAfter := CallsAfter + 1;
+            ;
         END_METHOD
     END_CLASS
 

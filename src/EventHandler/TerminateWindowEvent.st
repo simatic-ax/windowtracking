@@ -13,7 +13,14 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
                 te : IVirtualTrigger;
                 tw : ITransportWindow;
             END_VAR
-
+            ;
+        END_METHOD
+    
+        METHOD PUBLIC ActionAfter : EventStatus
+            VAR_INPUT
+                te : IVirtualTrigger;
+                tw : ITransportWindow;
+            END_VAR
             // Activate additional user defined event before
             IF (EventBefore <> NULL) THEN
                 EventBefore.Action(tw := tw, te := te);
@@ -26,9 +33,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             IF (EventAfter <> NULL) THEN
                 EventAfter.Action(tw := tw, te := te);
             END_IF;
-
-            Action := EventStatus#Finished; 
-            
+            ;
         END_METHOD
     END_CLASS
 END_NAMESPACE

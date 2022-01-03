@@ -56,5 +56,12 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
 
         END_METHOD
     
+        METHOD PUBLIC ActionAfter : EventStatus
+            VAR_INPUT
+                te : IVirtualTrigger;
+                tw : ITransportWindow;
+            END_VAR
+            ; // do nothing
+        END_METHOD
     END_CLASS
 END_NAMESPACE

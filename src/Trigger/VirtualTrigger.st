@@ -66,6 +66,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 _inRange : BOOL;
                 _ul : DINT;
                 _ll : DINT;
+                _evStatus : EventStatus;
             END_VAR
 
             IF (PositiveTolerace = -1) THEN
@@ -85,7 +86,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                     _activeWindow := tw;
                     _checkState := EXPECT_END_OF_WINDOW;
                     IF (EventHandler <> NULL) THEN
-                        EventHandler.Action(tw := tw, te := THIS);
+                        _evStatus := EventHandler.Action(tw := tw, te := THIS);
                     END_IF;
                     Check := TRUE;
                 END_IF;
@@ -99,6 +100,9 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 IF (NOT _inRange) THEN
                     _activeWindow := NULL;
                     _checkState := EXPECT_WINDOW_IN_RANGE;
+                    IF (EventHandler <> NULL) THEN
+                        _evStatus := EventHandler.ActionAfter(tw := tw, te := THIS);
+                    END_IF;
                     Check := FALSE;
                 END_IF;
             END_IF;        

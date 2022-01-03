@@ -41,7 +41,7 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             // Remove Window at Position 200
             enc.EncoderValue := 200;
             tws.Evaluate();
-            enc.EncoderValue := 206;
+            enc.EncoderValue := 206;  // move window out of range
             tws.Evaluate();
             Equal(expected := UINT#1, actual := tws.Count());
 

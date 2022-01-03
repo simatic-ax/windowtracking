@@ -14,6 +14,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         VAR PROTECTED
             _activeWindow : ITransportWindow;
             _checkState : INT;
+            _activations : DINT;
         END_VAR
 
         VAR CONSTANT PRIVATE  
@@ -85,6 +86,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 IF (_inRange) THEN
                     _activeWindow := tw;
                     _checkState := EXPECT_END_OF_WINDOW;
+                    _activations := _activations + 1;
                     IF (EventHandler <> NULL) THEN
                         _evStatus := EventHandler.Action(tw := tw, te := THIS);
                     END_IF;

@@ -9,6 +9,8 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
         VAR PUBLIC
             SortStrategy : ISortStrategy;
             ExitHandler : IExitPointHandler;
+            EventBefore : IUserDefinedEvent;
+            EventAfter : IUserDefinedEvent;
         END_VAR
     
         METHOD PUBLIC Action : EventStatus
@@ -31,11 +33,24 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
 
             _check := SortStrategy.Check(tw := tw, te := te, exitpoint := ExitHandler);
             
+            
             IF (_check) THEN
+                // Activate additional user defined event before
+                IF (EventBefore <> NULL) THEN
+                    EventBefore.Action(tw := tw, te := te);
+                END_IF;            
+
                 ExitHandler.Activate();
                 Action := EventStatus#Finished; 
+
+                // Activate additional user defined event after
+                IF (EventAfter <> NULL) THEN
+                    EventAfter.Action(tw := tw, te := te);
+                END_IF;
+
                 RETURN;
             END_IF;
+
 
             Action := EventStatus#Undefined; 
 

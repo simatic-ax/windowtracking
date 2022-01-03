@@ -53,5 +53,12 @@ NAMESPACE Simatic.Ax.WindowTracking
             Item := i;
             ;
         END_METHOD
-END_CLASS
+
+        METHOD PUBLIC SetPosition
+            VAR_INPUT
+                pos : DINT;
+            END_VAR
+            _actualPos  := pos;
+        END_METHOD
+    END_CLASS
 END_NAMESPACE

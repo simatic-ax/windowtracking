@@ -22,7 +22,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD PUBLIC Create : ITransportWindow
             VAR_INPUT
                 i : IItem;
-                // TODO offset
+                offset : DINT;
             END_VAR
             IF (Encoder = NULL) THEN
                 Create := NULL;
@@ -32,7 +32,9 @@ NAMESPACE Simatic.Ax.WindowTracking
             _tranportWindowList[_head] := _tranportWindowListStorage[_head];
             _tranportWindowList[_head].CalcPosition(Encoder);
             _tranportWindowList[_head].SetItem(i);
+            // _tranportWindowList[_head].SetPosition(offset);
             Create := _tranportWindowList[_head];
+
 
             _head := _head + UINT#1;
             _head := _head MOD BUF_SIZE;

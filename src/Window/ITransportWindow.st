@@ -16,6 +16,12 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD GetPosition : DINT
         END_METHOD
 
+        METHOD SetPosition
+            VAR_INPUT
+                pos : DINT;
+            END_VAR
+        END_METHOD
+
         METHOD GetItem : IItem
         END_METHOD
 

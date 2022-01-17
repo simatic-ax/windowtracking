@@ -363,14 +363,14 @@
   dependencies:
     "@ax/system-timer" "1.0.12"
 
-"@simatic-ax/simple-control-modules@0.0.3":
-  version "0.0.3"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.0.3/cc138a9c76823a4c37437adf267b88493cba788204252f026a02608b7ca5fcb0#b90c7dca91b80dced7a222789043a2beb688a2da"
-  integrity sha512-G/KdQGr9HfUGcP4MNXDPzsIAXeH1p/9R2bkzwb+I3huFMR8mnv2zqUYzvoA4zbrK1y8xSNqfLvkpxWG5jn853Q==
+"@simatic-ax/simple-control-modules@0.0.5":
+  version "0.0.5"
+  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.0.5/aa0814e7b96053af27d2461d1be92e6cf055da1ff26769307e88a9b59efb67c8#819341f1768a3da9faaa6ad101a74854dba85996"
+  integrity sha512-I62E9twABPiWKnwNFEmuT/Nnz6V4J51rTMCy8vYaqOjf+9q7PTpiiG5DYYHJLYcnY9jZ8nPWop+9wiKK5OnFpw==
   dependencies:
     "@simatic-ax/io" "0.1.2"
 
-"@simatic-ax/snippetscollection@0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/snippetscollection/0.0.4/538ff2699372967e4d3d217100a579371453e8633ba2aaf7c1da3671cb7be87f#99cc10bca20c1729bce96ddf3b71c0f00b388058"
-  integrity sha512-GBlhVHePHrQyni6W3G1uxZkRq5nwpMEhJWGnB5bD4HJCwSG8wx4Dgk1WksYw5VbnnZXBZvnS8KYZoQlo4B3mIg==
+"@simatic-ax/snippetscollection@0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@simatic-ax/snippetscollection/0.0.6/0c5dfb121a478816973432d8fefd7c4868da78031f8fe12eeacb067e6a7656b4#9bfb71c62d44e7b95ab0798e9ac46366290884fc"
+  integrity sha512-BohhLC7n3pHP5QRPaNXbt0tQXNgGKvuWBsohJ+Jzj+tgOU9o6K6i6l8CHaTsFev5Lq0I08jRyfIdCJ/gfJy+BA==

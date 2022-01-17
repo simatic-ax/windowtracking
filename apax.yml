@@ -15,12 +15,11 @@ scripts:
     # - apax test
     - apax version $1
     - apax pack
-    - apax publishlib
 devDependencies:
   "@ax/sdk": 1.0.127
-  "@simatic-ax/snippetscollection": 0.0.4
+  "@simatic-ax/snippetscollection": 0.0.6
 dependencies:
-  "@simatic-ax/simple-control-modules": 0.0.3
+  "@simatic-ax/simple-control-modules": 0.0.5
   "@simatic-ax/collections": 0.1.1
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
@@ -28,6 +27,7 @@ registries:
 files:
   - 'README.md'
   - 'LICENSE.md'
+  - 'changelog.md'
   - 'doc'
   - 'src' # ship library with source
   # - 'library/1500/'   # ship library with binary

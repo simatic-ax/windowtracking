@@ -1,10 +1,10 @@
 USING Simatic.Ax.WindowTracking.EventHandler;
 USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.SortDecission;
+USING Simatic.Ax.WindowTracking.SortDecision;
 USING Simatic.Ax.WindowTracking.ExitPointHandler;
 
 NAMESPACE Simatic.Ax.WindowTracking.EventHandler
-    CLASS SortDecissionEvent IMPLEMENTS ITriggerEvent
+    CLASS SortDecisionEvent IMPLEMENTS ITriggerEvent
 
         VAR PUBLIC
             SortStrategy : ISortStrategy;

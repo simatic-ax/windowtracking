@@ -2,8 +2,8 @@ USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.WindowTracking.ExitPointHandler;
 
-NAMESPACE Simatic.Ax.WindowTracking.SortDecission
-    CLASS SortDecissionOneDestination IMPLEMENTS ISortStrategy
+NAMESPACE Simatic.Ax.WindowTracking.SortDecision
+    CLASS SortDecisionOneDestination IMPLEMENTS ISortStrategy
         VAR PUBLIC
 
         END_VAR

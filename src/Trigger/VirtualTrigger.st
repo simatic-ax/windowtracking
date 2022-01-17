@@ -7,7 +7,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Position : DINT;
             Id : UINT;
             EventHandler : ITriggerEvent;
-            PositiveTolerace : DINT := -1;
+            PositiveTolerance : DINT := -1;
             NegativeTolerance : DINT := -1;            
         END_VAR
 
@@ -70,10 +70,10 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 _evStatus : EventStatus;
             END_VAR
 
-            IF (PositiveTolerace = -1) THEN
+            IF (PositiveTolerance = -1) THEN
                 _ul := ul;
             ELSE 
-                _ul := PositiveTolerace;
+                _ul := PositiveTolerance;
             END_IF;
             IF (NegativeTolerance = -1) THEN
                 _ll := ll;

@@ -4,15 +4,15 @@ USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.WindowTracking.ExitPointHandler;
 
-NAMESPACE Simatic.Ax.WindowTracking.SortDecission
+NAMESPACE Simatic.Ax.WindowTracking.SortDecision
     {TestFixture}
-    CLASS SortDecissionOneDestinationTest
+    CLASS SortDecisionOneDestinationTest
         VAR PROTECTED
-            sd : SortDecissionOneDestination;
+            sd : SortDecisionOneDestination;
             tw : TransportWindow;
             te : VirtualTrigger;
             te_notok : VirtualTrigger;
-            ep : SortDecissionEvent;
+            ep : SortDecisionEvent;
             eph : ExitEventHandlerMock;
             item : ItemOneDestination;
         END_VAR

@@ -1,7 +1,7 @@
 NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS VirtualTriggerList IMPLEMENTS ITriggerList
         VAR PUBLIC
-            PositiveTolerace : DINT := 5;
+            PositiveTolerance : DINT := 5;
             NegativeTolerance : DINT := 5;
         END_VAR
 
@@ -65,7 +65,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO
                 o := _triggerPointList[i];
                 IF (o <> NULL) THEN
-                    o.Check(tw := tw, ll := NegativeTolerance, ul := PositiveTolerace);
+                    o.Check(tw := tw, ll := NegativeTolerance, ul := PositiveTolerance);
                 END_IF;
             END_FOR;
             Check := TRUE; 

@@ -12,6 +12,10 @@ NAMESPACE Simatic.Ax.WindowTracking
             enc : EncoderMock;
         END_VAR
 
+        {Test}
+        METHOD PUBLIC Test_Encode_NULL_Expect_False
+            Equal(expected := FALSE, actual := tw.CalcPosition());
+        END_METHOD
 
         {Test}
         METHOD PUBLIC CalcPosition_of_different_encoder_values_with_offset

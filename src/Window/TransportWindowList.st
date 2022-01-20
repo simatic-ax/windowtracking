@@ -67,6 +67,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             END_VAR
 
             IF (THIS.Count() <= UINT#0) THEN
+                Evaluate := FALSE;
                 RETURN;
             END_IF;
             FOR i := UINT#0 TO THIS.Count() - UINT#1 DO

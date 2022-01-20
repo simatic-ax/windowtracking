@@ -13,12 +13,12 @@ NAMESPACE Simatic.Ax.WindowTracking
             END_VAR
         END_METHOD
 
-        METHOD GetPosition : DINT
+        METHOD GetPosition : LINT
         END_METHOD
 
         METHOD SetPosition
             VAR_INPUT
-                pos : DINT;
+                pos : LINT;
             END_VAR
         END_METHOD
 

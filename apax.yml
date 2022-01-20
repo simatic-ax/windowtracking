@@ -1,5 +1,5 @@
 name: '@simatic-ax/windowtracking'
-version: 0.0.11
+version: 0.1.0
 author: Siemens AG
 type: lib
 targets:
@@ -19,7 +19,7 @@ devDependencies:
   "@ax/sdk": 1.0.127
   "@simatic-ax/snippetscollection": 0.0.6
 dependencies:
-  "@simatic-ax/simple-control-modules": 0.0.5
+  "@simatic-ax/simple-control-modules": 0.1.0
   "@simatic-ax/collections": 0.1.1
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'

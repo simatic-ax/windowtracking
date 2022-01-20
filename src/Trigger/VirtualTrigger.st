@@ -112,14 +112,14 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
 
         METHOD PRIVATE InRange : BOOL
             VAR_INPUT
-               sp : DINT;
-               value : DINT;
-               ul : DINT;
-               ll : DINT;
+               sp : LINT;
+               value : LINT;
+               ul : LINT;
+               ll : LINT;
             END_VAR
             VAR_TEMP
-               _ul : DINT;
-               _ll : DINT;
+               _ul : LINT;
+               _ll : LINT;
             END_VAR;
             _ul := sp + ul;
             _ll := sp - ll;

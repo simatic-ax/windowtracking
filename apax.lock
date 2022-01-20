@@ -363,10 +363,10 @@
   dependencies:
     "@ax/system-timer" "1.0.12"
 
-"@simatic-ax/simple-control-modules@0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.0.5/aa0814e7b96053af27d2461d1be92e6cf055da1ff26769307e88a9b59efb67c8#819341f1768a3da9faaa6ad101a74854dba85996"
-  integrity sha512-I62E9twABPiWKnwNFEmuT/Nnz6V4J51rTMCy8vYaqOjf+9q7PTpiiG5DYYHJLYcnY9jZ8nPWop+9wiKK5OnFpw==
+"@simatic-ax/simple-control-modules@0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.1.0/5790f5e9822898a36fad6337a01575e2f47d95a2a315456015363c9abebad0b2#01b07545c4e7146522ce6d7ea7cd6f40ba0a79d3"
+  integrity sha512-y6K0240zSX8/9Purjoi2kI3YDq+OkihgXuzKjDU552T82XkbMoySe4mDpNV8hC+LSmmTtVOxlz9rY48zopIeuA==
   dependencies:
     "@simatic-ax/io" "0.1.2"
 

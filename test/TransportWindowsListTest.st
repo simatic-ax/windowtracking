@@ -27,6 +27,11 @@ NAMESPACE Simatic.Ax.WindowTracking
         END_METHOD
 
         {Test}
+        METHOD PUBLIC Evaluate_a_empty_list_expect_False
+            Equal(expected := FALSE, actual := tws.Evaluate());
+        END_METHOD
+
+        {Test}
         METHOD PUBLIC Count_Of_Empty_List_Expect_0
             THIS.Setup();
             Equal(expected := UINT#0, actual := tws.Count());
@@ -91,7 +96,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         {Test}
         METHOD PUBLIC Test_Evaluate_4_windows_with_Distance_10
             VAR_TEMP
-                pos : DINT;
+                pos : LINT;
             END_VAR
             THIS.Create_4Windows_And_Call_Count_Expect_4();
             THIS.Setup();
@@ -110,7 +115,7 @@ NAMESPACE Simatic.Ax.WindowTracking
         {Test}
         METHOD PUBLIC Test_Evaluate_4_windows_with_Distance_20
             VAR_TEMP
-                pos : DINT;
+                pos : LINT;
             END_VAR
             THIS.Test_Evaluate_4_windows_with_Distance_10();
             enc.EncoderValue := 20;
@@ -217,8 +222,8 @@ NAMESPACE Simatic.Ax.WindowTracking
         METHOD PUBLIC Create_A_window_onenocoder_value_300_and_track_the_position
             VAR_TEMP
                 i : INT;
-                pos : DINT;
-                pos_exp : DINT;
+                pos : LINT;
+                pos_exp : LINT;
             END_VAR
             tws.Encoder := enc;
             enc.EncoderValue := 300;
@@ -239,7 +244,7 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS EncoderMock IMPLEMENTS IEncoder
     
         VAR PUBLIC
-            EncoderValue : DINT;
+            EncoderValue : LINT;
         END_VAR
 
         METHOD PUBLIC Evaluate
@@ -252,12 +257,12 @@ NAMESPACE Simatic.Ax.WindowTracking
 
         METHOD PUBLIC SetValue
             VAR_INPUT
-                value : DINT;
+                value : LINT;
             END_VAR
             ;
         END_METHOD
 
-        METHOD PUBLIC GetValue : DINT
+        METHOD PUBLIC GetValue : LINT
             GetValue := EncoderValue;
         END_METHOD
 
@@ -268,7 +273,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             ;
         END_METHOD
 
-        METHOD PUBLIC RelativeCount : DINT
+        METHOD PUBLIC RelativeCount : LINT
             ;
         END_METHOD
 
@@ -276,7 +281,7 @@ NAMESPACE Simatic.Ax.WindowTracking
             ;
         END_METHOD
 
-        METHOD PUBLIC GetModulo : DINT
+        METHOD PUBLIC GetModulo : LINT
             GetModulo := 4096;
         END_METHOD
     END_CLASS

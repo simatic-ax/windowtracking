@@ -1,0 +1,18 @@
+{
+    "VirtualTriggerSnippet": {
+    "scope": "javascript,typescript,st",
+    "prefix": ["VirtualTrigger instance"],
+    "body": [
+        "${1:myInstance} : VirtualTrigger :=(Id := UINT#${2:id}, Position := DINT#${3:pos}, EventHandler := ${4:NULL});"
+    ],
+    "description": "Create an instance of VirtualTrigger with initializer;"
+    },
+    "VirtualTriggerSnippet2": {
+        "scope": "javascript,typescript,st",
+        "prefix": ["VirtualTrigger instance with tolerance"],
+        "body": [
+            "${1:myInstance} : VirtualTrigger :=(Id := UINT#${2:id}, Position := DINT#${3:pos}, EventHandler := ${4:NULL}, PositiveTolerance := ${5:-1}, NegativeTolerance := ${6:-1});"
+        ],
+        "description": "Create an instance of VirtualTrigger with initializer and tolerance;"
+        }
+}

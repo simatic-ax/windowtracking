@@ -28,6 +28,7 @@ files:
   - 'README.md'
   - 'LICENSE.md'
   - 'changelog.md'
+  - 'snippets'
   - 'doc'
   - 'src' # ship library with source
   # - 'library/1500/'   # ship library with binary

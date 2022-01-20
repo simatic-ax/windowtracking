@@ -1,0 +1,16 @@
+
+{
+    "VirtualTriggerSnippet": {
+    "scope": "javascript,typescript,st",
+    "prefix": ["WindowTracking basic setup"],
+    "body": [
+        "${1:TriggerPointList} : VirtualTriggerList := (PositiveTolerance := ${2:50}, NegativeTolerance := ${2:50});",
+        "${3:WindowList} : TransportWindowList := (Encoder := ${4:Encoder}, TriggerPointList := ${1:TriggerPointList});",
+        "${4:Encoder} : IEncoder;",
+        "SortStrategy : ${5:ISortStrategy};"
+    ],
+    "description": "Create an instance of VirtualTrigger with initializer;"
+    }
+}
+
+

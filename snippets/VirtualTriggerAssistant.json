@@ -1,0 +1,12 @@
+{
+    "VirtualTriggerSnippet": {
+    "scope": "javascript,typescript,st",
+    "prefix": ["VirtualTrigger assistant"],
+    "body": [
+        "${1:myExit} : ${2:IExitPointHandler};",
+        "${3:myTriggerEvent} : SortDecisionEvent := (SortStrategy := SortStrategy, ExitHandler := ${1:myExit});",
+        "${4:myVirtualTrigger} : VirtualTrigger := (ID := UINT#${6:0}, Position := ${7:0}, EventHandler := ${3:myTriggerEvent});"
+    ],
+    "description": "Create an instance of VirtualTrigger with initializer;"
+    }
+}

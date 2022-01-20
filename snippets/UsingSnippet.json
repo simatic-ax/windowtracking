@@ -1,0 +1,10 @@
+{
+    "UsingSnippet": {
+    "scope": "javascript,typescript,st",
+    "prefix": ["Windowtracking Using"],
+    "body": [
+        "USING Simatic.Ax.WindowTracking${2| ,.Trigger,.Items,.SortDecision,.ExitPointHandler|};$0"
+    ],
+    "description": "Create USING Simatic.Ax.WindowTracking;"
+    }
+}

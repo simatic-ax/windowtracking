@@ -1,5 +1,4 @@
 USING AxUnit.Assert;
-USING AxUnit.Assert;
 USING Simatic.Ax.WindowTracking.Trigger;
 
 NAMESPACE Simatic.Ax.WindowTracking.Items

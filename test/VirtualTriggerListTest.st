@@ -5,6 +5,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
     CLASS TestVirtualTriggerList
         VAR PROTECTED
             tl : VirtualTriggerList;
+            TriggerPointList : ARRAY[0..50] OF IVirtualTrigger;
             trig1 : VirtualTrigger := (Id := UINT#1, Position := 1100);
             trig2 : VirtualTrigger := (Id := UINT#2, Position := 1200);
             trig3 : VirtualTrigger := (Id := UINT#3, Position := 1300);
@@ -13,6 +14,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         END_VAR
 
         METHOD PRIVATE SetupTriggerList
+            tl.TriggerPointList := REF(TriggerPointList);
             trig1.EventHandler := evt;
             tl.Add(tp := trig1);
             
@@ -37,6 +39,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             VAR_TEMP
                 t : IVirtualTrigger;
             END_VAR
+            tl.TriggerPointList := REF(TriggerPointList);
             t := tl.GetTriggerPoint(UINT#1);
             Equal(expected := TRUE, actual := t = NULL);
         END_METHOD
@@ -50,7 +53,13 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
                 id : UINT;
                 expVal : DINT;
             END_VAR
+            VAR_TEMP
+                vt : IVirtualTrigger;
+                pos : DINT;
+            END_VAR
             THIS.SetupTriggerList();
+            vt := tl.GetTriggerPoint(id);
+            pos := vt.GetPosition();
             Equal(expected := expVal, actual := tl.GetTriggerPoint(id).GetPosition());
         END_METHOD
 

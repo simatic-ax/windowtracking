@@ -15,9 +15,11 @@ NAMESPACE Simatic.Ax.WindowTracking
             te1 : TriggerEventMock;
             te2 : TriggerEventMock;
             tl : VirtualTriggerList;
+            TriggerPointList : ARRAY[0..50] OF IVirtualTrigger;
         END_VAR
         
         METHOD PROTECTED Setup
+            tl.TriggerPointList := REF(TriggerPointList);
             tws.Encoder := enc;
             v1.EventHandler := te1;
             v2.EventHandler := te2;
@@ -117,7 +119,11 @@ NAMESPACE Simatic.Ax.WindowTracking
             VAR_TEMP
                 pos : LINT;
             END_VAR
-            THIS.Test_Evaluate_4_windows_with_Distance_10();
+            
+            THIS.Setup();
+            enc.EncoderValue := 10;
+            tws.Evaluate();
+
             enc.EncoderValue := 20;
             tws.Evaluate();
             pos := tws.GetWindow(UINT#0).GetPosition();

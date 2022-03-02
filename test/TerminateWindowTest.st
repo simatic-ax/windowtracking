@@ -16,9 +16,11 @@ NAMESPACE Simatic.Ax.WindowTracking.EventHandler
             tl : VirtualTriggerList;
             teAfter : TerminateUserEvent;
             teBefore : TerminateUserEvent;
+            TriggerPointList : ARRAY[0..50] OF IVirtualTrigger;
         END_VAR
         
         METHOD PROTECTED Setup
+            tl.TriggerPointList := REF(TriggerPointList);
             tws.Encoder := enc;
             v1.EventHandler := te1;
             v2.EventHandler := te2;

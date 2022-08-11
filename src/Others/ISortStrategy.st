@@ -1,7 +1,6 @@
-USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.ExitPointHandler;
+USING Simatic.Ax.WindowTracking;
 
-NAMESPACE Simatic.Ax.WindowTracking.SortDecision
+NAMESPACE Simatic.Ax.WindowTracking
     INTERFACE ISortStrategy
         METHOD Check : BOOL
             VAR_INPUT

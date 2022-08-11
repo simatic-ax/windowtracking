@@ -1,6 +1,6 @@
-USING Simatic.Ax.WindowTracking.EventHandler;
-USING Simatic.Ax.WindowTracking.Trigger;
-NAMESPACE Simatic.Ax.WindowTracking.Items
+USING Simatic.Ax.WindowTracking;
+
+NAMESPACE Simatic.Ax.WindowTracking
     INTERFACE IItem
         METHOD GetDestination : IVirtualTrigger
             VAR_INPUT 

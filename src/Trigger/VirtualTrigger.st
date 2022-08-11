@@ -1,6 +1,6 @@
-USING Simatic.Ax.WindowTracking.EventHandler;
+USING Simatic.Ax.WindowTracking;
 
-NAMESPACE Simatic.Ax.WindowTracking.Trigger
+NAMESPACE Simatic.Ax.WindowTracking
     CLASS VirtualTrigger IMPLEMENTS IVirtualTrigger
 
         VAR PUBLIC

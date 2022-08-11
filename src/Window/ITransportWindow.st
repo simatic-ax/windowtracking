@@ -1,4 +1,3 @@
-USING Simatic.Ax.WindowTracking.Items;
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking

@@ -1,7 +1,5 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.WindowTracking.EventHandler;
-NAMESPACE Simatic.Ax.WindowTracking.Trigger
+NAMESPACE Simatic.Ax.WindowTracking
     {TestFixture}
     CLASS WindowingIntegraiveTest
         VAR PROTECTED

@@ -1,5 +1,5 @@
 USING Simatic.Ax.SimpleControlModules;
-USING Simatic.Ax.WindowTracking.Items;
+
 NAMESPACE Simatic.Ax.WindowTracking
     
     CLASS TransportWindow IMPLEMENTS ITransportWindow

@@ -35,7 +35,7 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
         END_METHOD
 
         {Test}
-        METHOD PUBLIC Test_GetId_element_not_found_expect_null          
+        METHOD PUBLIC GetTriggerPoint_on_empty_TriggerPointList_returns_null
             VAR_TEMP
                 t : IVirtualTrigger;
             END_VAR
@@ -44,14 +44,13 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             Equal(expected := TRUE, actual := t = NULL);
         END_METHOD
 
-        {Test(id := UINT#1, expVal := 1100)}
-        {Test(id := UINT#2, expVal := 1200)}
-        {Test(id := UINT#3, expVal := 1300)}
-        {Test(id := UINT#4, expVal := 1400)}
-        METHOD PUBLIC Test_GetId_of_four_triggers_and_expect_correct_position
+        {Test(id := UINT#1)}
+        {Test(id := UINT#2)}
+        {Test(id := UINT#3)}
+        {Test(id := UINT#4)}
+        METHOD PUBLIC  GetTriggerPoint_on_TriggerPointList_with_four_entries_returns_correct_element
             VAR_INPUT
                 id : UINT;
-                expVal : DINT;
             END_VAR
             VAR_TEMP
                 vt : IVirtualTrigger;
@@ -59,8 +58,8 @@ NAMESPACE Simatic.Ax.WindowTracking.Trigger
             END_VAR
             THIS.SetupTriggerList();
             vt := tl.GetTriggerPoint(id);
-            pos := vt.GetPosition();
-            Equal(expected := expVal, actual := tl.GetTriggerPoint(id).GetPosition());
+            pos := vt.GetId();
+            Equal(expected := id, actual := tl.GetTriggerPoint(id).GetId());
         END_METHOD
 
     END_CLASS

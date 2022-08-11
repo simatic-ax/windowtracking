@@ -1,5 +1,5 @@
-NAMESPACE Simatic.Ax.WindowTracking.Trigger
-    CLASS VirtualTriggerList IMPLEMENTS ITriggerList
+NAMESPACE Simatic.Ax.WindowTracking
+    CLASS FINAL VirtualTriggerList IMPLEMENTS ITriggerList
         VAR PUBLIC
             PositiveTolerance : DINT := 5;
             NegativeTolerance : DINT := 5;

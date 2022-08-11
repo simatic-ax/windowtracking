@@ -1,4 +1,4 @@
-NAMESPACE Simatic.Ax.WindowTracking.Trigger
+NAMESPACE Simatic.Ax.WindowTracking
     INTERFACE ITriggerList
 
         METHOD Add : BOOL

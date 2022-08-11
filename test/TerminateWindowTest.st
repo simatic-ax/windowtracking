@@ -1,8 +1,6 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.EventHandler;
-USING Simatic.Ax.WindowTracking.Trigger;
 
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+NAMESPACE Simatic.Ax.WindowTracking
     {TestFixture}
     CLASS TerminateWindowTest
         VAR PROTECTED

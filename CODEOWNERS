@@ -2,5 +2,5 @@
 @sjuergen
 
 # Code owners for docu changes
-docs/* @simatic-ax/TeamOfAxion
+docs/* @simatic-ax/teamofaxion
 README.md 

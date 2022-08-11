@@ -3,4 +3,4 @@
 
 # Code owners for docu changes
 docs/* @simatic-ax/teamofaxion
-README.md 
+README.md @simatic-ax/teamofaxion

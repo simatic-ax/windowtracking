@@ -1,6 +1,3 @@
-USING Simatic.Ax.WindowTracking.Trigger;
-USING Simatic.Ax.SimpleControlModules;
-
 NAMESPACE Simatic.Ax.WindowTracking
     INTERFACE ITransportWindowsTerminate
 

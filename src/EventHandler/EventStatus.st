@@ -1,4 +1,4 @@
-NAMESPACE Simatic.Ax.WindowTracking.EventHandler
+NAMESPACE Simatic.Ax.WindowTracking
 
     TYPE
         EventStatus : (Undefined, Finished, Error, NullReference, NotEnabled) := Undefined;

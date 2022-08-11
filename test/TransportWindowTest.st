@@ -1,5 +1,4 @@
 USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.Trigger;
 USING Simatic.Ax.SimpleControlModules;
 
 

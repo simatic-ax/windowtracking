@@ -1,8 +1,6 @@
 USING AxUnit.Assert;
-USING AxUnit.Assert;
-USING Simatic.Ax.WindowTracking.Trigger;
 
-NAMESPACE Simatic.Ax.WindowTracking.Items
+NAMESPACE Simatic.Ax.WindowTracking
     {TestFixture}
     CLASS ItemTest
         VAR PROTECTED

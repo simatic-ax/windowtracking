@@ -1,6 +1,4 @@
-USING Simatic.Ax.WindowTracking.Trigger;
-
-NAMESPACE Simatic.Ax.WindowTracking.Items
+NAMESPACE Simatic.Ax.WindowTracking
     CLASS ItemOneDestination IMPLEMENTS IItem
         
         VAR PUBLIC

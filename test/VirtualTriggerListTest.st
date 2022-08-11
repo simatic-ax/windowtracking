@@ -1,6 +1,6 @@
-USING Simatic.Ax.WindowTracking.Trigger;
 USING AxUnit.Assert;
-NAMESPACE Simatic.Ax.WindowTracking.Trigger
+
+NAMESPACE Simatic.Ax.WindowTracking
     {TestFixture}
     CLASS TestVirtualTriggerList
         VAR PROTECTED

@@ -1,7 +1,7 @@
 USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS TransportWindowList IMPLEMENTS ITransportWindowsTerminate
+    CLASS FINAL TransportWindowList IMPLEMENTS ITransportWindowsTerminate
         VAR PUBLIC
             Encoder : IEncoder;
             TriggerPointList : ITriggerList;

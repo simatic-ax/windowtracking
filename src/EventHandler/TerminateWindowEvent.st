@@ -1,5 +1,5 @@
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS TerminateWindowEvent IMPLEMENTS ITriggerEvent
+    CLASS FINAL TerminateWindowEvent IMPLEMENTS ITriggerEvent
         VAR PUBLIC
             WindowList : ITransportWindowsTerminate;
             EventBefore : IUserDefinedEvent;

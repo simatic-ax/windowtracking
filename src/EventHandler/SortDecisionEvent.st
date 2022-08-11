@@ -1,5 +1,20 @@
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS SortDecisionEvent IMPLEMENTS ITriggerEvent
+/// A sort decision event is a predefined trigger event that can be used specifically 
+/// to handle route decisions. Whenever a window passes a virtual trigger (trigger point) 
+/// that has a `sort decision event`, it is checked whether the item should trigger an 
+/// action at this trigger point. 
+///
+/// Public interface:
+/// SortStrategy : ISortStrategy;   
+///   Checks whether an action should be triggered for the item at this trigger point 
+///
+/// ExitHandler : IExitPointHandler;
+///   Action() of the IExitPointHandler is executed when SortStrategy.Check() returns TRUE
+/// 
+/// EventBefore : IUserDefinedEvent;  Userdefined event which is called before the Action() of the IExitPointHandler is called
+/// EventAfter : IUserDefinedEvent;   Userdefined event which is called after the Action() of the IExitPointHandler is called
+{axcode:docs-v0:@simatic-ax/windowtracking:SortDecissionEvent.md}
+CLASS FINAL SortDecisionEvent IMPLEMENTS ITriggerEvent
 
         VAR PUBLIC
             SortStrategy : ISortStrategy;

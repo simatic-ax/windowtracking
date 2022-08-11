@@ -2,7 +2,7 @@ USING Simatic.Ax.SimpleControlModules;
 
 NAMESPACE Simatic.Ax.WindowTracking
     
-    CLASS TransportWindow IMPLEMENTS ITransportWindow
+    CLASS FINAL TransportWindow IMPLEMENTS ITransportWindow
         VAR PUBLIC
             Item : IItem;
         END_VAR

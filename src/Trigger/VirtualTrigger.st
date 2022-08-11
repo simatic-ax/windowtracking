@@ -1,7 +1,7 @@
 USING Simatic.Ax.WindowTracking;
 
 NAMESPACE Simatic.Ax.WindowTracking
-    CLASS VirtualTrigger IMPLEMENTS IVirtualTrigger
+    CLASS FINAL VirtualTrigger IMPLEMENTS IVirtualTrigger
 
         VAR PUBLIC
             Position : DINT;

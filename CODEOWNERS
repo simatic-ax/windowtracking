@@ -1,0 +1,6 @@
+# Codeowners for the whole repo
+@sjuergen
+
+# Code owners for docu changes
+docs/* @simatic-ax/teamofaxion
+README.md @simatic-ax/teamofaxion

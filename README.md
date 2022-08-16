@@ -40,6 +40,12 @@ apax add @simatic-ax/windowtracking
 ## Namespace
 ```
 Simatic.Ax.WindowTracking;
+Simatic.Ax.WindowTracking;
+Simatic.Ax.WindowTracking.Trigger;
+Simatic.Ax.WindowTracking.EventHandler;
+Simatic.Ax.WindowTracking.Items;
+Simatic.Ax.WindowTracking.ExitPointHandler;
+Simatic.Ax.WindowTracking.SortDecision;
 ```
 
 ## VirtualTriggerList
@@ -113,7 +119,6 @@ VAR_GLOBAL
     trig01 : VirtualTrigger := (ID := UINT#101, Position := 2000, [PositiveTolerance := 50,] [NegativeTolerance := 50,] EventHandler := eventHandler);
 END_VAR
 ```
-
 
 ## Contribution
 

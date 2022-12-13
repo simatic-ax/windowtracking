@@ -34,17 +34,12 @@ Enter:
 ```cli
 apax add @simatic-ax/windowtracking
 ```
-> to install this package you need to login into the GitHub registry. You'll find more information [here](https://github.com/simatic-ax/.sharedstuff/blob/main/doc/personalaccesstoken.md) 
+> to install this package you need to login into the GitHub registry. You'll find more information [here](https://github.com/simatic-ax/.github/blob/main/docs/personalaccesstoken.md) 
 
 
 ## Namespace
 ```
 Simatic.Ax.WindowTracking;
-Simatic.Ax.WindowTracking.Trigger;
-Simatic.Ax.WindowTracking.EventHandler;
-Simatic.Ax.WindowTracking.Items;
-Simatic.Ax.WindowTracking.ExitPointHandler;
-Simatic.Ax.WindowTracking.SortDecision;
 ```
 
 ## VirtualTriggerList
@@ -118,7 +113,6 @@ VAR_GLOBAL
     trig01 : VirtualTrigger := (ID := UINT#101, Position := 2000, [PositiveTolerance := 50,] [NegativeTolerance := 50,] EventHandler := eventHandler);
 END_VAR
 ```
-
 
 ## Contribution
 

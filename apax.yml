@@ -1,34 +1,35 @@
+# General information
 name: '@simatic-ax/windowtracking'
 version: 0.0.0-placeholder
 author: Siemens AG
 type: lib
+# Description will be displayed in the apax extension
+description: the windowtracking library supports you to track data of an item which is transported on a conveyor belt for instance
+#URL to the repository
+repository:
+  type: git
+  url: https://github.com/simatic-ax/windowtracking
 targets:
   - "1500"
   - axunit-llvm
   - llvm
-scripts:
-  publishlib:
-    - apax publish --package *.apax.tgz --registry 'https://npm.pkg.github.com/'
-    - rm *.apax.tgz -f
-  createpackage:
-    # - apax build
-    # - apax test
-    - apax version $1
-    - apax pack
+# Environment variables
+variables:
+  APAX_BUILD_ARGS:
+    - '--debug'
+# Dependencies
 devDependencies:
-  "@ax/sdk": 2.0.3
-  "@simatic-ax/snippetscollection": 0.0.13
+  "@ax/sdk": 3.0.8
+  "@simatic-ax/snippetscollection": 0.0.15
 dependencies:
-  "@simatic-ax/simple-control-modules": 1.0.0
-  "@simatic-ax/collections": 0.2.0
+  "@simatic-ax/simple-control-modules": 2.0.0
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
-
+# Files which 'apax pack' will include
 files:
   - 'README.md'
   - 'LICENSE.md'
   - 'changelog.md'
   - 'snippets'
-  - 'doc'
-  - 'src' # ship library with source
-  # - 'library/1500/'   # ship library with binary
+  - 'docs'
+  - 'src'

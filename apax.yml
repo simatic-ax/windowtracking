@@ -16,11 +16,11 @@ scripts:
     - apax version $1
     - apax pack
 devDependencies:
-  "@ax/sdk": 2.0.3
-  "@simatic-ax/snippetscollection": 0.0.13
-dependencies:
+  "@ax/sdk": 3.0.8
+  "@simatic-ax/snippetscollection": 0.0.15
+# dependencies:
   "@simatic-ax/simple-control-modules": 1.0.0
-  "@simatic-ax/collections": 0.2.0
+  # "@simatic-ax/collections": 1.0.0
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 

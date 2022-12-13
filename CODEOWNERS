@@ -1,6 +1,4 @@
-# Codeowners for the whole repo
-@sjuergen
-
-# Code owners for docu changes
-docs/* @simatic-ax/teamofaxion
-README.md @simatic-ax/teamofaxion
+# These owners will be the default owners for everything in the repo. 
+# Unless a later match takes precedence, the listed user will be 
+# requested for review when someone opens a pull request.
+* @sjuergen @BeckerStS @kruegerfelix

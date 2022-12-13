@@ -18,9 +18,8 @@ scripts:
 devDependencies:
   "@ax/sdk": 3.0.8
   "@simatic-ax/snippetscollection": 0.0.15
-# dependencies:
-  "@simatic-ax/simple-control-modules": 1.0.0
-  # "@simatic-ax/collections": 1.0.0
+dependencies:
+  "@simatic-ax/simple-control-modules": 2.0.0
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 

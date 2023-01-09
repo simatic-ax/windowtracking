@@ -1,13 +1,15 @@
 # SortDecisionEvent
 
 ## Description
-A `SortDecisionEvent` is a predefined `ITriggerEvent` that can be used specifically 
-to handle route decisions. Whenever a window passes a virtual trigger (trigger point) 
-that has a `SortDecisionEvent`, it is checked whether the item should trigger an 
+
+A `SortDecisionEvent` is a predefined `ITriggerEvent` that can be used specifically
+to handle route decisions. Whenever a window passes a virtual trigger (trigger point)
+that has a `SortDecisionEvent`, it is checked whether the item should trigger an
 action of the `ExitHandler` at this trigger point.
 Further more before and after the EventHandler, User defined (`IUserDefinedEvent`) events can be executed.
 
-## Public interface:
+## Public interface
+
 |||
 |-|-|
 | SortStrategy : ISortStrategy; | Checks whether an action should be triggered for the item at this trigger point |
@@ -16,6 +18,7 @@ Further more before and after the EventHandler, User defined (`IUserDefinedEvent
 |EventAfter : IUserDefinedEvent; | Userdefined event which is called after the Action() of the IExitPointHandler is called |
 
 ## Class diagramm
+
 ```mermaid
 classDiagram
 SortDecisionEvent--|>ITriggerEvent

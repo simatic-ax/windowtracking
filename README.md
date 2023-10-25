@@ -23,7 +23,7 @@ When a `VirtualWindow` leaves a `VirtualTrigger` then then the VirtualTrigger wi
 
 If the `VirtualWindow` reaches the end of the transport route, it must by terminated by the application.
 
-![Conceptual overview over the window tracking](./doc/winconcept.png)
+![Conceptual overview over the window tracking](./docs/winconcept.png)
 
 Objects:
 

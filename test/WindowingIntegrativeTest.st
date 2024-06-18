@@ -4,6 +4,7 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS WindowingIntegraiveTest
         VAR PROTECTED
             twl : TransportWindowList;
+            twlStateless : TransportWindowList;           
             tpl : VirtualTriggerList;
 
             tp1 : VirtualTrigger;
@@ -21,6 +22,12 @@ NAMESPACE Simatic.Ax.WindowTracking
             tp1.EventHandler := hdl;
             tpl.Add(tp1);
         END_METHOD   
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            twl := twlStateless;
+        END_METHOD
 
         {Test}
         METHOD PUBLIC Test_Crate3_Windows_with_distance_20

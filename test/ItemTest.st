@@ -5,9 +5,16 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS ItemTest
         VAR PROTECTED
             i : ItemOneDestination;
+            iStateless : ItemOneDestination;
             vt : VirtualTrigger;
             ivt : IVirtualTrigger;
         END_VAR
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            i := iStateless;
+        END_METHOD
 
         {Test}
         METHOD PUBLIC Test_Count_with_no_deststination_expect_0

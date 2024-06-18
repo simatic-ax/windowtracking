@@ -4,6 +4,7 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS TestVirtualTrigger
         VAR PROTECTED
             vt : VirtualTrigger;
+            vtStateless : VirtualTrigger;
             evt : TriggerEventMock;
             tw : TransportWindow;
             enc : EncoderMock;
@@ -13,6 +14,12 @@ NAMESPACE Simatic.Ax.WindowTracking
             vt.EventHandler := evt;
             vt.Position := 1000;
             vt.Id := UINT#10;
+        END_METHOD
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            vt := vtStateless;
         END_METHOD
 
         {Test}

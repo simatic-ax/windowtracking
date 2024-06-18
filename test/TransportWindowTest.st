@@ -8,8 +8,15 @@ NAMESPACE Simatic.Ax.WindowTracking
         
         VAR PROTECTED
             tw : TransportWindow;
+            twStateless : TransportWindow;
             enc : EncoderMock;
         END_VAR
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            tw := twStateless;
+        END_METHOD
 
         {Test}
         METHOD PUBLIC Test_Encode_NULL_Expect_False

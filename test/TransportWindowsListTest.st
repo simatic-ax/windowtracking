@@ -8,7 +8,9 @@ NAMESPACE Simatic.Ax.WindowTracking
         
         VAR PROTECTED
             tws : TransportWindowList;
+            twsStateless : TransportWindowList;
             enc : EncoderMock;
+            encStateless : EncoderMock;
             v1 : VirtualTrigger := (Position := 100, Id := UINT#1);
             v2 : VirtualTrigger := (Position := 200, Id := UINT#2);
             te1 : TriggerEventMock;
@@ -23,6 +25,13 @@ NAMESPACE Simatic.Ax.WindowTracking
             tl.Add(v1);
             tl.Add(v2);
             tws.TriggerPointList := tl;
+        END_METHOD
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            tws := twsStateless;
+            enc := encStateless;
         END_METHOD
 
         {Test}

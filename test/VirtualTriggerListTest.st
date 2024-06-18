@@ -5,6 +5,7 @@ NAMESPACE Simatic.Ax.WindowTracking
     CLASS TestVirtualTriggerList
         VAR PROTECTED
             tl : VirtualTriggerList;
+            tlStateless : VirtualTriggerList;
             trig1 : VirtualTrigger := (Id := UINT#1, Position := 1100);
             trig2 : VirtualTrigger := (Id := UINT#2, Position := 1200);
             trig3 : VirtualTrigger := (Id := UINT#3, Position := 1300);
@@ -24,6 +25,12 @@ NAMESPACE Simatic.Ax.WindowTracking
 
             trig4.EventHandler := evt;
             tl.Add(tp := trig4);
+        END_METHOD
+
+        // This method will be called before each test method
+        {TestSetup}
+        METHOD PUBLIC MyTestSetup
+            tl := tlStateless;
         END_METHOD
 
         {Test}

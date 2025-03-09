@@ -27,7 +27,7 @@ devDependencies:
   "@ax/sdk": 2411.1.0
   "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
-  "@simatic-ax/simple-control-modules": 6.0.0
+  "@simatic-ax/simple-control-modules": 7.0.0
 # Files which 'apax pack' will include
 files:
   - 'README.md'

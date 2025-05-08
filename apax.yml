@@ -15,19 +15,21 @@ targets:
 # Registry information, where the package will be published
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
+catalogs:
+  "@ax/simatic-ax": ^2504.0.0
+
+# Dependencies
+devDependencies:
+  "@ax/sdk": ^2504.0.0
+  "@simatic-ax/snippetscollection": ^1.0.0
+dependencies:
+  "@simatic-ax/simple-control-modules": ^8.0.0
+
 # Environment variables
 variables:
   APAX_BUILD_ARGS:
     - '--debug'
-# Install settings
-installStrategy: strict
-apaxVersion: 3.2.1
-# Dependencies
-devDependencies:
-  "@ax/sdk": 2411.2.0
-  "@simatic-ax/snippetscollection": 1.0.0
-dependencies:
-  "@simatic-ax/simple-control-modules": 7.0.0
+
 # Files which 'apax pack' will include
 files:
   - 'README.md'
@@ -35,5 +37,4 @@ files:
   - 'changelog.md'
   - 'snippets'
   - 'docs'
-  - 'src' # ship library as src-files
-  # - 'bin'    # ship library as bin-files
+  - 'bin'

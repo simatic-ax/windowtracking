@@ -16,12 +16,12 @@ targets:
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 catalogs:
-  "@ax/simatic-ax": ^2504.0.0
+  "@ax/simatic-ax": ^2504.1.2
 
 # Dependencies
 devDependencies:
-  "@ax/sdk": ^2504.0.0
-  "@simatic-ax/snippetscollection": ^1.0.0
+  "@ax/sdk": ^2504.1.2
+  "@simatic-ax/snippetscollection": ^1.1.0
 dependencies:
   "@simatic-ax/simple-control-modules": ^8.0.0
 

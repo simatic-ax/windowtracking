@@ -23,7 +23,7 @@ devDependencies:
   "@ax/sdk": ^2510.0.0
   "@simatic-ax/snippetscollection": ^1.1.0
 dependencies:
-  "@simatic-ax/simple-control-modules": ^8.0.0
+  "@simatic-ax/simple-control-modules": ^9.0.0
 
 # Environment variables
 variables:

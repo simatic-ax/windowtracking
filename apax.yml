@@ -9,29 +9,22 @@ description: The windowtracking library supports you to track data of an item wh
 repository:
   type: git
   url: https://github.com/simatic-ax/windowtracking
-targets:
-  - "1500"
-  - llvm
 # Registry information, where the package will be published
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 # Dependencies
 catalogs:
-  "@ax/simatic-ax": ^2510.0.0
+  "@ax-as/s7-catalog": ^2610.0.0
 publicKeys:
   "@simatic-ax":
     "v1": "3792a7e926775425ccdd29ceed8c368c3008b5b33d7d5550b3cb1f58093e1dff"
     "v2": "7af3e394eb2b285a3d99ab8e1f745cc6db75704b30a80393339c721a92ffffd9"
 devDependencies:
-  "@ax/sdk": ^2510.0.0
+  "@ax-as/s7-sdk": ^2610.0.0
   "@simatic-ax/snippetscollection": ^1.1.0
 dependencies:
-  "@simatic-ax/simple-control-modules": ^9.0.1
+  "@simatic-ax/simple-control-modules": ^10.0.0
 
-# Environment variables
-variables:
-  APAX_BUILD_ARGS:
-    - '--debug'
 
 # Files which 'apax pack' will include
 files:
@@ -40,4 +33,5 @@ files:
   - 'changelog.md'
   - 'snippets'
   - 'docs'
-  - 'bin'
+  - 'out/Debug/s7'
+  - 'out/Debug/llvm'
